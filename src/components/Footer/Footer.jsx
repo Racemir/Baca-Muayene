@@ -176,7 +176,9 @@ export default function Footer({ onOpenAppointment }) {
               </li>
               <li>
                 <Mail size={16} className="contact-icon" />
-                <span className="font-regular">bilgi@bacarapor.com</span>
+                <a href="mailto:surmelibacaraporu@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }} className="font-regular">
+                  surmelibacaraporu@gmail.com
+                </a>
               </li>
               <li>
                 <MapPin size={16} className="contact-icon" />

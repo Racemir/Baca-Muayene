@@ -31,6 +31,26 @@ export default function AppealsComplaintsProcedure() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
+
+    const recipient = 'surmelibacaraporu@gmail.com';
+    const subject = `[BKR Resmi Başvuru] ${formData.type} - ${formData.fullName}`;
+    const body = `BAŞVURU DETAYLARI:
+----------------------------------------
+Başvuru Türü: ${formData.type}
+Ad Soyad / Yetkili: ${formData.fullName}
+Firma / Tesis: ${formData.company || 'Belirtilmedi'}
+Telefon: ${formData.phone}
+E-Posta: ${formData.email}
+Rapor / Dosya No: ${formData.reportNo || 'Belirtilmedi'}
+
+AÇIKLAMA / GEREKÇE:
+${formData.details}
+----------------------------------------
+Tarih: ${new Date().toLocaleDateString('tr-TR')}
+`;
+
+    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
   };
 
   return (
@@ -249,7 +269,7 @@ export default function AppealsComplaintsProcedure() {
                 Başvurunuz Kayıt Altına Alındı
               </h4>
               <p className="font-regular" style={{ color: '#a0a0ad', maxWidth: '500px' }}>
-                Sayın <strong>{formData.fullName}</strong>, başvurunuz Kalite Yönetim Birimi'ne iletilmiştir. ISO 17020 Madde 7.5 prosedürü uyarınca en geç <strong>1 hafta içinde</strong> yazılı teyit mektubu tarafınıza ulaştırılacak ve en geç <strong>30 gün içinde</strong> bağımsız heyet kararı tebliğ edilecektir.
+                Sayın <strong>{formData.fullName}</strong>, başvurunuz resmi olarak <strong>surmelibacaraporu@gmail.com</strong> adresine iletilmiştir. ISO 17020 Madde 7.5 prosedürü uyarınca en geç <strong>1 hafta içinde</strong> yazılı teyit mektubu tarafınıza ulaştırılacak ve en geç <strong>30 gün içinde</strong> bağımsız heyet kararı tebliğ edilecektir.
               </p>
               <button 
                 type="button" 
