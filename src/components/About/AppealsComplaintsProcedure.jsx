@@ -26,31 +26,45 @@ export default function AppealsComplaintsProcedure() {
     reportNo: '',
     details: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError('');
 
-    const recipient = 'surmelibacaraporu@gmail.com';
-    const subject = `[BKR Resmi Başvuru] ${formData.type} - ${formData.fullName}`;
-    const body = `BAŞVURU DETAYLARI:
-----------------------------------------
-Başvuru Türü: ${formData.type}
-Ad Soyad / Yetkili: ${formData.fullName}
-Firma / Tesis: ${formData.company || 'Belirtilmedi'}
-Telefon: ${formData.phone}
-E-Posta: ${formData.email}
-Rapor / Dosya No: ${formData.reportNo || 'Belirtilmedi'}
+    try {
+      const response = await fetch('https://formspree.io/f/mgaolegn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'Başvuru Türü': formData.type,
+          'Ad Soyad / Yetkili': formData.fullName,
+          'Firma / Tesis': formData.company || 'Belirtilmedi',
+          'Telefon': formData.phone,
+          'E-Posta': formData.email,
+          'Rapor / Dosya No': formData.reportNo || 'Belirtilmedi',
+          'Gerekçe / Detay': formData.details,
+          '_subject': `[BKR Resmi Başvuru] ${formData.type} - ${formData.fullName}`
+        })
+      });
 
-AÇIKLAMA / GEREKÇE:
-${formData.details}
-----------------------------------------
-Tarih: ${new Date().toLocaleDateString('tr-TR')}
-`;
-
-    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoUrl;
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const data = await response.json();
+        setSubmitError(data.error || 'Başvuru gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.');
+      }
+    } catch (error) {
+      setSubmitError('Bağlantı hatası oluştu. Lütfen internet bağlantınızı kontrol ediniz.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -255,11 +269,22 @@ Tarih: ${new Date().toLocaleDateString('tr-TR')}
                     onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                   ></textarea>
                 </div>
+
+                {submitError && (
+                  <div className="form-full-width" style={{ color: '#ef4444', fontSize: '14px', marginTop: '8px' }}>
+                    {submitError}
+                  </div>
+                )}
               </div>
 
-              <button type="submit" className="city-submit-btn" style={{ maxWidth: '320px', marginTop: '12px' }}>
+              <button 
+                type="submit" 
+                className="city-submit-btn" 
+                style={{ maxWidth: '320px', marginTop: '12px' }}
+                disabled={isSubmitting}
+              >
                 <Send size={16} />
-                <span>Resmi Başvuruyu Gönder</span>
+                <span>{isSubmitting ? 'Gönderiliyor...' : 'Resmi Başvuruyu Gönder'}</span>
               </button>
             </form>
           ) : (
