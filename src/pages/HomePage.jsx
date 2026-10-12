@@ -46,9 +46,9 @@ export default function HomePage({ onOpenAppointment, onSelectService }) {
     <div className="home-page-layout">
       {/* Ana Sayfa SEO Meta Bilgileri */}
       <SeoHead
-        title="Baca Rapor | Akredite Baca Sızdırmazlık Testi ve Muayene Raporu"
-        description="Türkiye genelinde 81 ilde gaz açım onaylı baca sızdırmazlık testi, proje uygunluk muayenesi ve periyodik baca kontrol raporlama hizmetleri."
-        keywords="baca kontrol, baca sızdırmazlık testi, baca muayene raporu, igdaş baca raporu, başkentgaz baca uygunluk, doğalgaz baca uygunluk"
+        title="Baca Raporu | Yetkili Baca Sızdırmazlık Testi ve Uygunluk Raporu"
+        description="Yetkili baca raporu, baca sızdırmazlık testi ve doğalgaz baca uygunluk muayenesi. 81 ilde gaz dağıtım onaylı, akredite ve hızlı baca raporu hizmeti."
+        keywords="baca raporu, baca sızdırmazlık testi, doğalgaz baca raporu, baca uygunluk belgesi, baca muayenesi, akredite baca kontrolü"
         canonicalUrl="https://bacaraporu.com.tr/"
         schemaData={homeSchema}
       />
