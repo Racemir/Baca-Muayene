@@ -26,12 +26,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   z-index: 1;
+  overflow: hidden;
+  background-color: #050505;
+}
+
+.hero-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
   transform: scale(1.02);
   transition: transform 8s ease;
+  pointer-events: none;
 }
 
 /* Siyah-gri tonları için radyal ve doğrusal degrade katmanı */

@@ -51,9 +51,9 @@ export default function CitiesPage({ onOpenAppointment }) {
     <div className="cities-page-layout">
       {/* 81 İl SEO Başlık ve Meta Tanımları */}
       <SeoHead
-        title="81 İl Akredite Baca Kontrol ve Sızdırmazlık Muayenesi | Baca Rapor"
-        description="Türkiye'nin 81 ilinde yetkili gaz dağıtım kuruluşları (İGDAŞ, Başkentgaz, İzmirgaz vb.) onaylı akredite baca sızdırmazlık testi ve kontrol hizmetleri."
-        keywords="türkiye baca kontrol, 81 il baca muayenesi, baca sızdırmazlık testi, gaz açım baca raporu, baca uygunluk belgesi"
+        title="81 İl Baca Raporu | Yetkili Baca Sızdırmazlık Testi ve Muayene Hizmetleri"
+        description="Türkiye'nin 81 ilinde gaz dağıtım kuruluşları (İGDAŞ, Başkentgaz, İzmirgaz vb.) onaylı yetkili baca raporu, baca sızdırmazlık testi ve kontrol hizmetleri."
+        keywords="81 il baca raporu, türkiye baca raporu, yetkili baca raporu, baca sızdırmazlık testi, gaz açım baca raporu, doğalgaz baca uygunluk belgesi"
         canonicalUrl="https://bacaraporu.com.tr/iller"
       />
 

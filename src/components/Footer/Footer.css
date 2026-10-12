@@ -142,6 +142,60 @@
 }
 
 /* --------------------------------------------------------------------------
+   ÖNE ÇIKAN İLLER SEO BAĞLANTILARI
+   -------------------------------------------------------------------------- */
+.footer-cities-seo-bar {
+  padding: 24px 0;
+  margin-bottom: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-cities-title {
+  display: block;
+  font-size: 13px;
+  color: #a0a0ab;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-cities-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+.footer-city-tag {
+  font-size: 13px;
+  color: #71717a;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.footer-city-tag:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.footer-city-tag.footer-city-all {
+  color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.2);
+  font-weight: 500;
+}
+
+.footer-city-tag.footer-city-all:hover {
+  background-color: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+/* --------------------------------------------------------------------------
    FOOTER ALT ÇİZGİ VE YASAL BİLGİLER
    -------------------------------------------------------------------------- */
 .footer-bottom-bar {

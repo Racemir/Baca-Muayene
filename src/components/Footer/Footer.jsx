@@ -5,7 +5,7 @@
    ========================================================================== */
 
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { ShieldCheck, Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import './Footer.css';
 
@@ -187,6 +187,29 @@ export default function Footer({ onOpenAppointment }) {
             </ul>
           </div>
 
+        </div>
+        
+        {/* ----- 2.5 ÖNE ÇIKAN İLLER SEO BAĞLANTILARI ----- */}
+        <div className="footer-cities-seo-bar">
+          <span className="footer-cities-title font-medium">Öne Çıkan İl Hizmetlerimiz:</span>
+          <div className="footer-cities-tags">
+            <Link to="/iller/istanbul" className="footer-city-tag">İstanbul Baca Raporu</Link>
+            <Link to="/iller/ankara" className="footer-city-tag">Ankara Baca Raporu</Link>
+            <Link to="/iller/izmir" className="footer-city-tag">İzmir Baca Raporu</Link>
+            <Link to="/iller/bursa" className="footer-city-tag">Bursa Baca Raporu</Link>
+            <Link to="/iller/antalya" className="footer-city-tag">Antalya Baca Raporu</Link>
+            <Link to="/iller/kocaeli" className="footer-city-tag">Kocaeli Baca Raporu</Link>
+            <Link to="/iller/konya" className="footer-city-tag">Konya Baca Raporu</Link>
+            <Link to="/iller/adana" className="footer-city-tag">Adana Baca Raporu</Link>
+            <Link to="/iller/gaziantep" className="footer-city-tag">Gaziantep Baca Raporu</Link>
+            <Link to="/iller/tekirdag" className="footer-city-tag">Tekirdağ Baca Raporu</Link>
+            <Link to="/iller/eskisehir" className="footer-city-tag">Eskişehir Baca Raporu</Link>
+            <Link to="/iller/kayseri" className="footer-city-tag">Kayseri Baca Raporu</Link>
+            <Link to="/iller/mersin" className="footer-city-tag">Mersin Baca Raporu</Link>
+            <Link to="/iller/sakarya" className="footer-city-tag">Sakarya Baca Raporu</Link>
+            <Link to="/iller/samsun" className="footer-city-tag">Samsun Baca Raporu</Link>
+            <Link to="/iller" className="footer-city-tag footer-city-all">Tüm 81 İl İçin Tıklayın →</Link>
+          </div>
         </div>
 
         {/* ----- 3. FOOTER ALT ÇİZGİSİ VE TELİF HAKKI ----- */}

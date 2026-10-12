@@ -52,9 +52,9 @@ export default function CityDetailPage({ onOpenAppointment }) {
   const city = getCityBySlug(citySlug) || getCityBySlug('ankara');
 
   // Dinamik SEO ve Yapılandırılmış Veri (Schema.org JSON-LD)
-  const pageTitle = `${city.name} Baca Kontrol ve Sızdırmazlık Testi | Baca Rapor`;
-  const pageDescription = `${city.name} genelinde ${city.gasCompany} onaylı akredite baca sızdırmazlık testi, TS EN 13384 kesit uygunluk muayenesi ve periyodik baca kontrol raporu.`;
-  const pageKeywords = `${city.name} baca kontrol, ${city.name} baca sızdırmazlık testi, ${city.name} baca raporu, ${city.gasCompany} baca onay, ${city.name} doğalgaz baca muayenesi, ${city.name} periyodik baca kontrolü`;
+  const pageTitle = `${city.name} Baca Raporu | Yetkili Baca Sızdırmazlık Testi ve Uygunluk`;
+  const pageDescription = `${city.name} yetkili baca raporu, baca sızdırmazlık testi ve doğalgaz baca uygunluk muayenesi. ${city.gasCompany} onaylı akredite ve hızlı baca kontrol raporu alın.`;
+  const pageKeywords = `${city.name} baca raporu, ${city.name} baca sızdırmazlık testi, ${city.name} doğalgaz baca raporu, ${city.gasCompany} baca raporu, ${city.name} baca uygunluk belgesi, ${city.name} periyodik baca kontrolü`;
   const canonicalUrl = `https://bacaraporu.com.tr/iller/${city.slug}`;
 
   const schemaData = {

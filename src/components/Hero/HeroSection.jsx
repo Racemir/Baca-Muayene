@@ -20,11 +20,16 @@ export default function HeroSection({ onOpenAppointment }) {
     <section id="anasayfa" className="hero-section">
       
       {/* ----- 1. ARKA PLAN GÖRSELİ VE KARARTMA KATMANI ----- */}
-      {/* Sitenin tamamını kaplayan sinematik arka plan görseli */}
-      <div 
-        className="hero-background-image" 
-        style={{ backgroundImage: `url(${heroBgImage})` }}
-      >
+      {/* Yüksek öncelikli (fetchPriority="high") ve optimize edilmiş arka plan görseli */}
+      <div className="hero-background-image">
+        <img 
+          src={heroBgImage} 
+          alt="Yetkili Baca Kontrol ve Muayene Hizmetleri" 
+          className="hero-bg-img"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+        />
         <div className="hero-overlay-gradient"></div>
         <div className="hero-overlay-grid"></div>
       </div>
