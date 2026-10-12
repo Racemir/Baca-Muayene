@@ -1,0 +1,62 @@
+/* ==========================================================================
+   KURUMSAL SAYFASI ÖZEL STİLLERİ (CORPORATEPAGE.CSS)
+   ========================================================================== */
+
+.corporate-page-layout {
+  min-height: 100vh;
+  background-color: #050505;
+  display: flex;
+  flex-direction: column;
+}
+
+.corporate-page-main {
+  flex: 1;
+  padding-top: 90px; /* Sabit Navbar boşluğu */
+}
+
+/* --------------------------------------------------------------------------
+   KURUMSAL SAYFA BAŞI BREADCRUMB
+   -------------------------------------------------------------------------- */
+.corporate-page-hero {
+  position: relative;
+  padding: 32px 0 12px 0;
+}
+
+.corporate-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #7b7b85;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+  color: #ffffff;
+}
+
+.breadcrumb-separator {
+  color: #4a4a52;
+}
+
+.breadcrumb-current {
+  color: #d1d1dc;
+  font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   İÇERİK BÖLÜMÜ
+   -------------------------------------------------------------------------- */
+.corporate-content-section {
+  padding: 24px 0 100px 0;
+}

@@ -1,0 +1,206 @@
+/* ==========================================================================
+   BACA RAPOR - GENEL STİL DOSYASI (GLOBAL STYLESHEET)
+   Font: Helvetica Neue (Medium, Bold, İtalik, Regular varyasyonları)
+   Renk Paleti: Siyah, Beyaz, Grafit & Metalik Gri (Kaf Technology Stili)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. KÖK DEĞİŞKENLER VE TEMA TANIMLARI (CSS VARIABLES)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Font Ailesi: Helvetica Neue ve modern sistem alternatifleri */
+  --font-main: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Arka Plan Renkleri: Derin siyah ve koyu gri tonları */
+  --bg-deep-black: #050505;
+  --bg-card: rgba(18, 18, 18, 0.75);
+  --bg-card-hover: rgba(28, 28, 28, 0.9);
+  --bg-surface: #0e0e10;
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-glass-heavy: rgba(12, 12, 14, 0.85);
+
+  /* Kenarlık ve Çizgi Renkleri */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-hover: rgba(255, 255, 255, 0.35);
+
+  /* Metin Renkleri */
+  --text-white: #ffffff;
+  --text-muted: #9a9aa0;
+  --text-dim: #63636b;
+  --text-inverse: #050505;
+
+  /* Vurgu ve İnce Metalik Efektler */
+  --accent-glow: rgba(255, 255, 255, 0.12);
+  --accent-cyan-subtle: #4dd0e1;
+
+  /* Genişlik ve Boşluk Standartları */
+  --max-width: 1360px;
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. TEMEL SIFIRLAMA VE SAYFA YAPISI (CSS RESET & BASE)
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-deep-black);
+  color: var(--text-white);
+  font-family: var(--font-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-deep-black);
+  color: var(--text-white);
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   3. TİPOGRAFİ HİYERARŞİSİ (HELVETICA NEUE TYPOGRAPHY)
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  color: var(--text-white);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+/* Font Ağırlıkları (Weights) */
+.font-light {
+  font-weight: 300;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   4. YARDIMCI VE DÜZEN SINIFLARI (LAYOUT UTILITIES)
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. BUTONLAR VE ETKİLEŞİM ELEMANLARI (BUTTONS & CTAs)
+   -------------------------------------------------------------------------- */
+button, a {
+  font-family: var(--font-main);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+/* Birincil Buton: Temiz beyaz yüzey, koyu yazı */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--text-white);
+  color: var(--text-inverse);
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--text-white);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover {
+  background-color: #e5e5e5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+}
+
+/* İkincil / Cam Buton: Şeffaf koyu gövde, ince çerçeve */
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-white);
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--border-medium);
+}
+
+.btn-glass:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   6. ÖZEL KAYDIRMA ÇUBUĞU (CUSTOM SCROLLBAR)
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #282828;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3e3e3e;
+}

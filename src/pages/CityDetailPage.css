@@ -1,0 +1,934 @@
+/* ==========================================================================
+   STİL: İL DETAY SAYFASI (CITYDETAILPAGE.CSS)
+   Açıklama: Her bir il için özel hazırlanan bölgesel baca muayene,
+   hazır taslak metin, 3'lü bölgesel hizmet özeti ve hızlı teklif formu tasarımı.
+   ========================================================================== */
+
+.city-detail-layout {
+  min-height: 100vh;
+  background-color: #050505;
+  color: #f3f3f6;
+  display: flex;
+  flex-direction: column;
+}
+
+.city-detail-main {
+  flex: 1;
+  padding-top: 86px;
+}
+
+/* --------------------------------------------------------------------------
+   EKMEK KIRINTISI (BREADCRUMB)
+   -------------------------------------------------------------------------- */
+.city-breadcrumb-bar {
+  padding: 24px 0 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.city-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.city-breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #7b7b85;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.city-breadcrumb-link:hover {
+  color: #ffffff;
+}
+
+.city-breadcrumb-separator {
+  color: #4a4a52;
+}
+
+.city-breadcrumb-current {
+  color: #d1d1dc;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   TEPE HERO BÖLÜMÜ
+   -------------------------------------------------------------------------- */
+.city-hero-section {
+  position: relative;
+  padding: 56px 0 64px 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.city-hero-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.city-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e2e2ec;
+}
+
+.city-plate-highlight {
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.city-gas-company-tag {
+  font-size: 12px;
+  color: #9ea0ad;
+  letter-spacing: 0.04em;
+}
+
+.city-hero-title {
+  font-size: clamp(32px, 4.5vw, 54px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   HAZIR TASLAK METNİ BÖLÜMÜ (OFFICIAL BRIEFING BLOCK)
+   -------------------------------------------------------------------------- */
+.city-draft-text-box {
+  background: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid #ffffff;
+  border-radius: 0 20px 20px 0;
+  padding: 32px 36px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.draft-section-lead {
+  margin-bottom: 24px;
+}
+
+.draft-lead-paragraph {
+  font-size: clamp(16px, 1.7vw, 18.5px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: #ededf4;
+}
+
+.draft-lead-paragraph strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Hayati Risk Vurgusu */
+.draft-risk-highlight {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.draft-risk-icon {
+  color: #ef4444;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.draft-risk-content {
+  flex: 1;
+}
+
+.draft-risk-title {
+  font-size: 15.5px;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.draft-risk-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #d0d0dc;
+}
+
+/* Yasal Mevzuat ve Güvenlik Maddeleri */
+.draft-legal-points-wrapper {
+  margin-bottom: 30px;
+}
+
+.draft-points-heading {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #9a9ab0;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.draft-points-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.draft-point-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 12px 18px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.draft-point-item:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.point-icon-wrapper {
+  color: #22c55e;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.point-text-wrapper {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #b5b5c5;
+}
+
+.point-text-wrapper strong {
+  display: inline;
+  color: #ffffff;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+/* Standartlar & Mühendislik Hesapları */
+.draft-standards-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  padding: 22px 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.standards-icon-col {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.standards-text-col {
+  flex: 1;
+}
+
+.standards-title {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.standards-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #a9a9ba;
+  margin-bottom: 14px;
+}
+
+.standards-desc strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.standards-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.std-badge {
+  font-size: 11.5px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e2ec;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* Periyodik Muayene Bölgesel Vurgusu */
+.draft-periodic-assurance {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #d1d1dc;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 26px;
+}
+
+.draft-periodic-assurance strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* İletişim & CTA Kartı */
+.draft-contact-cta-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 22px 26px;
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cta-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  width: fit-content;
+}
+
+.cta-card-message {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #f0f0f5;
+  margin: 0;
+}
+
+.cta-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-draft-appointment {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-draft-appointment:hover {
+  background: #e6e6e6;
+  transform: translateY(-1px);
+}
+
+.btn-draft-phone {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-draft-phone:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.btn-draft-whatsapp {
+  background: rgba(37, 211, 102, 0.12);
+  color: #25d366;
+  border: 1px solid rgba(37, 211, 102, 0.28);
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-draft-whatsapp:hover {
+  background: rgba(37, 211, 102, 0.2);
+  border-color: rgba(37, 211, 102, 0.45);
+  color: #25d366;
+}
+
+/* İlçe Etiketleri Izgarası */
+.city-districts-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.districts-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7b7b85;
+}
+
+.districts-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.district-tag-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: #d1d1dc;
+}
+
+/* --------------------------------------------------------------------------
+   BÖLGESEL HİZMET ÖZETİ (3'LÜ KART IZGARASI)
+   -------------------------------------------------------------------------- */
+.city-services-section {
+  padding: 64px 0 80px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.city-section-header {
+  margin-bottom: 36px;
+}
+
+.city-section-tag {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8c8c96;
+  margin-bottom: 10px;
+}
+
+.city-section-title {
+  font-size: clamp(26px, 3.2vw, 36px);
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.city-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.city-service-card {
+  background: #0f0f14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  min-height: 340px;
+}
+
+.city-service-card:hover {
+  background: #15151c;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.city-service-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.city-service-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.city-service-card:hover .city-service-icon-box {
+  background: #ffffff;
+  color: #050505;
+}
+
+.city-service-name {
+  font-size: 19px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.city-service-desc {
+  font-size: 14px;
+  color: #8c8c98;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.city-service-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.city-action-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #9f9fa8;
+  transition: color 0.2s ease;
+}
+
+.city-service-card:hover .city-action-text {
+  color: #ffffff;
+}
+
+.city-action-arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.city-service-card:hover .city-action-arrow {
+  background: #ffffff;
+  color: #050505;
+  transform: translate(2px, -2px);
+}
+
+/* --------------------------------------------------------------------------
+   AKSİYON BÖLÜMÜ: HIZLI FORM VE DİREKT ARAMA ALANI
+   -------------------------------------------------------------------------- */
+.city-action-section {
+  padding: 80px 0 100px 0;
+}
+
+.action-section-header {
+  margin-bottom: 40px;
+}
+
+.action-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.action-header-title {
+  font-size: clamp(28px, 3.6vw, 42px);
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.city-action-split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+}
+
+/* Sol Taraf: Hızlı İletişim Formu */
+.city-contact-form-card {
+  background: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.city-form-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.city-form-desc {
+  font-size: 14px;
+  color: #8c8c96;
+  margin-bottom: 24px;
+}
+
+.city-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.form-full-width {
+  grid-column: 1 / -1;
+}
+
+.city-input-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #d1d1dc;
+  margin-bottom: 6px;
+}
+
+.city-input-field,
+.city-select-field,
+.city-textarea-field {
+  width: 100%;
+  background: #121217;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.city-input-field:focus,
+.city-select-field:focus,
+.city-textarea-field:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+.city-submit-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #050505;
+  padding: 15px 24px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.city-submit-btn:hover {
+  background: #e6e6ec;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+/* Başarı Bildirimi */
+.city-form-success {
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.city-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #10b981;
+}
+
+/* Sağ Taraf: Bölgesel Ekip Çağrı Kartı */
+.city-direct-action-card {
+  background: linear-gradient(135deg, #111116 0%, #0d0d12 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.direct-card-top h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.direct-card-top p {
+  font-size: 14px;
+  color: #9ea0ad;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.direct-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.direct-perk-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #d1d1dc;
+}
+
+.perk-check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.direct-buttons-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.city-call-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #050505;
+  padding: 14px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.city-call-btn:hover {
+  background: #e6e6ec;
+  transform: translateY(-2px);
+}
+
+.city-whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  color: #25d366;
+  padding: 14px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.city-whatsapp-btn:hover {
+  background: rgba(37, 211, 102, 0.22);
+  color: #ffffff;
+  border-color: #25d366;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   DİĞER İLLERE GEÇİŞ KÖPRÜSÜ
+   -------------------------------------------------------------------------- */
+.city-neighbors-section {
+  padding: 40px 0 60px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.neighbors-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.neighbors-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.back-to-all-cities-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #9ea0ad;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.back-to-all-cities-link:hover {
+  color: #ffffff;
+}
+
+.neighbors-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.neighbor-chip {
+  background: #0f0f14;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #d1d1dc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.neighbor-chip:hover {
+  background: #15151c;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DÜZENLEME
+   -------------------------------------------------------------------------- */
+@media (max-width: 990px) {
+  .city-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .city-action-split-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .city-draft-text-box {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .draft-standards-box {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .draft-risk-highlight {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-draft-appointment,
+  .btn-draft-phone,
+  .btn-draft-whatsapp {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .city-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .city-contact-form-card,
+  .city-direct-action-card {
+    padding: 24px 20px;
+  }
+
+  .city-draft-text-box {
+    padding: 20px 16px;
+    border-radius: 0 14px 14px 0;
+  }
+}

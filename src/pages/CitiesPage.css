@@ -1,0 +1,518 @@
+/* ==========================================================================
+   STİL: HİZMET BÖLGELERİMİZ / 81 İL VİTRİN SAYFASI (CITIESPAGE.CSS)
+   Açıklama: Türkiye geneli 81 il dizini, etkileşimli hizmet ağı haritası,
+   arama filtresi ve alfabetik il kartları tasarımı.
+   ========================================================================== */
+
+.cities-page-layout {
+  min-height: 100vh;
+  background-color: #050505;
+  color: #f3f3f6;
+  display: flex;
+  flex-direction: column;
+}
+
+.cities-page-main {
+  flex: 1;
+  padding-top: 86px;
+}
+
+/* --------------------------------------------------------------------------
+   EKMEK KIRINTISI (BREADCRUMB)
+   -------------------------------------------------------------------------- */
+.cities-breadcrumb-bar {
+  padding: 24px 0 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.cities-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cities-breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #7b7b85;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.cities-breadcrumb-link:hover {
+  color: #ffffff;
+}
+
+.cities-breadcrumb-separator {
+  color: #4a4a52;
+}
+
+.cities-breadcrumb-current {
+  color: #d1d1dc;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   TEPE HERO ALANI & HİZMET AĞI GÖRSELİ
+   -------------------------------------------------------------------------- */
+.cities-hero-section {
+  position: relative;
+  padding: 56px 0 64px 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 65%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.cities-hero-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 48px auto;
+}
+
+.cities-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e2e2ec;
+  margin-bottom: 20px;
+}
+
+.cities-hero-title {
+  font-size: clamp(32px, 4.2vw, 52px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.cities-hero-lead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #9ea0ad;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   ETKİLEŞİMLİ TÜRKİYE HİZMET AĞI VİTRİNİ (INTERACTIVE NETWORK MAP)
+   -------------------------------------------------------------------------- */
+.turkey-network-showcase {
+  background: #0b0b0f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 26px;
+  padding: 36px 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.network-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.network-stat-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-box-val {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.stat-box-label {
+  font-size: 12px;
+  color: #8c8c96;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Harita Çerçevesi ve Merkez Düğümleri */
+.network-map-canvas {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.04) 0%, rgba(11, 11, 15, 0.95) 100%);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.network-map-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+
+.map-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.map-node:hover circle {
+  fill: #ffffff;
+  r: 9;
+}
+
+.map-pulse {
+  animation: mapPulseAnim 2s infinite ease-out;
+}
+
+@keyframes mapPulseAnim {
+  0% {
+    r: 6;
+    opacity: 0.9;
+  }
+  100% {
+    r: 22;
+    opacity: 0;
+  }
+}
+
+.map-overlay-badge {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  background: rgba(14, 14, 19, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #d1d1dc;
+}
+
+.map-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+}
+
+/* --------------------------------------------------------------------------
+   ARAMA VE BÖLGE FİLTRELEME BARI
+   -------------------------------------------------------------------------- */
+.cities-filter-toolbar {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cities-search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-input-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7b7b85;
+}
+
+.cities-search-input {
+  width: 100%;
+  background: #0f0f14;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px 20px 16px 50px;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.cities-search-input:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #b0b0b8;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-clear-btn:hover {
+  color: #ffffff;
+}
+
+/* Bölge Sekmeleri */
+.region-tabs-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.region-tab-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #92929e;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.region-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.region-tab-btn.region-tab-active {
+  background: #ffffff;
+  color: #050505;
+  font-weight: 600;
+  border-color: #ffffff;
+}
+
+/* Canlı Sayaç */
+.cities-results-count {
+  font-size: 13px;
+  color: #7b7b85;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --------------------------------------------------------------------------
+   81 İL IZGARA LİSTESİ (CITIES GRID)
+   -------------------------------------------------------------------------- */
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 72px;
+}
+
+.city-card-item {
+  background: #0f0f14;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.city-card-item:hover {
+  background: #15151c;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.city-card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.city-plate-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+}
+
+.city-card-item:hover .city-plate-badge {
+  background: #ffffff;
+  color: #050505;
+}
+
+.city-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.city-name-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.city-meta-text {
+  font-size: 11.5px;
+  color: #8c8c96;
+}
+
+.city-arrow-icon {
+  color: #555562;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.city-card-item:hover .city-arrow-icon {
+  color: #ffffff;
+  transform: translate(3px, -3px);
+}
+
+/* Arama Sonucu Bulunamadı Durumu */
+.cities-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: #0f0f14;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  margin-bottom: 60px;
+}
+
+.cities-empty-state h4 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.cities-empty-state p {
+  font-size: 14px;
+  color: #8c8c96;
+}
+
+/* --------------------------------------------------------------------------
+   ALT ÇAĞRI BANNERI (CTA)
+   -------------------------------------------------------------------------- */
+.cities-cta-strip {
+  background: linear-gradient(135deg, #14141b 0%, #0d0d12 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.cities-cta-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.cities-cta-content p {
+  font-size: 15px;
+  color: #9ea0ad;
+  margin: 0;
+}
+
+.cities-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #050505;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.cities-cta-btn:hover {
+  background: #e6e6ec;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DÜZENLEME
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .cities-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .cities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .network-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cities-cta-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 580px) {
+  .cities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .network-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .turkey-network-showcase {
+    padding: 24px 18px;
+  }
+}

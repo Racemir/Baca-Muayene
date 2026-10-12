@@ -1,0 +1,282 @@
+/* ==========================================================================
+   STİL: KARŞILAMA VE GİRİŞ ALANI (HERO SECTION CSS)
+   Açıklama: Tam ekran arka plan fotoğrafı, karanlık sinematik geçişler,
+   başlık tipografisi ve butonların konumlanması.
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  overflow: hidden;
+  background-color: #050505;
+}
+
+/* --------------------------------------------------------------------------
+   ARKA PLAN VE KARARTMA KATMANLARI
+   -------------------------------------------------------------------------- */
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  transform: scale(1.02);
+  transition: transform 8s ease;
+}
+
+/* Siyah-gri tonları için radyal ve doğrusal degrade katmanı */
+.hero-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 50% 30%, rgba(5, 5, 5, 0.4) 0%, rgba(5, 5, 5, 0.85) 75%, #050505 100%),
+    linear-gradient(to bottom, rgba(5, 5, 5, 0.8) 0%, rgba(5, 5, 5, 0.4) 50%, #050505 100%);
+}
+
+/* İnce teknolojik ızgara deseni (subtle texture) */
+.hero-overlay-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   İÇERİK VE TİPOGRAFİ
+   -------------------------------------------------------------------------- */
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 980px;
+}
+
+/* Akreditasyon / Durum Rozeti */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  border-radius: 9999px;
+  margin-bottom: 28px;
+}
+
+.hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.hero-badge-text {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #d1d1d6;
+  text-transform: uppercase;
+}
+
+/* Ana Başlık: "Güvenli Nefes Yasal Uygunluk" */
+.hero-title {
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--text-white);
+  margin-bottom: 24px;
+}
+
+.hero-title-highlight {
+  color: #b0b0b8;
+  font-weight: 400;
+  display: inline-block;
+}
+
+/* Açıklama Metni */
+.hero-description {
+  font-size: clamp(16px, 2vw, 19px);
+  color: #9898a0;
+  max-width: 680px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Aksiyon Butonları */
+.hero-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+
+.hero-btn-appointment {
+  padding: 16px 36px;
+  font-size: 16px;
+}
+
+.hero-btn-appointment:hover .btn-icon-hover {
+  transform: translateX(4px);
+}
+
+.btn-icon-hover {
+  transition: transform 0.2s ease;
+}
+
+.hero-btn-explore {
+  padding: 16px 32px;
+  font-size: 16px;
+}
+
+.hero-btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-size: 16px;
+  color: #ffffff;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  border-radius: 9999px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-btn-whatsapp:hover {
+  background: #25d366;
+  border-color: #25d366;
+  color: #0d1117;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   GÜVEN VE İSTATİSTİK ŞERİDİ
+   -------------------------------------------------------------------------- */
+.hero-trust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  max-width: 100%;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust-icon {
+  color: #ffffff;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.trust-text {
+  font-size: 13px;
+  color: #b5b5bc;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.trust-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   AŞAĞI KAYDIRMA İPUCU
+   -------------------------------------------------------------------------- */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #707078;
+  transition: color 0.2s ease;
+}
+
+.hero-scroll-indicator:hover {
+  color: #ffffff;
+}
+
+.scroll-text {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.scroll-chevron-bounce {
+  animation: bounceY 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes bounceY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DÜZENLEME
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero-trust-bar {
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+    padding: 16px 20px;
+  }
+
+  .trust-divider {
+    display: none;
+  }
+
+  .hero-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-btn-appointment,
+  .hero-btn-explore {
+    width: 100%;
+  }
+}
