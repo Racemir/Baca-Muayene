@@ -187,59 +187,10 @@ export default function Footer({ onOpenAppointment }) {
 
         </div>
 
-        {/* ----- 2.5. SEO BÖLGESEL HİZMET BAĞLANTILARI (POPÜLER İLLER İÇİN DOĞRUDAN LİNKLER) ----- */}
-        <div className="footer-seo-cities-section">
-          <div className="footer-seo-cities-header">
-            <span className="footer-seo-cities-tag">// BÖLGESEL DENETİM & SİTELİNK BAĞLANTILARI</span>
-            <h5 className="footer-seo-cities-title font-semibold">Öne Çıkan İl ve Bölge Baca Muayene Merkezleri</h5>
-          </div>
-          <div className="footer-seo-cities-grid">
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/istanbul')}>
-              İstanbul Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/ankara')}>
-              Ankara Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/izmir')}>
-              İzmir Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/bursa')}>
-              Bursa Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/kocaeli')}>
-              Kocaeli Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/antalya')}>
-              Antalya Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/adana')}>
-              Adana Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/gaziantep')}>
-              Gaziantep Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/konya')}>
-              Konya Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/kayseri')}>
-              Kayseri Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/tekirdag')}>
-              Tekirdağ Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-link font-regular" onClick={() => navigate('/iller/sakarya')}>
-              Sakarya Baca Kontrol
-            </button>
-            <button type="button" className="footer-seo-city-all-link font-medium" onClick={() => navigate('/iller')}>
-              Tüm 81 İl Listesi →
-            </button>
-          </div>
-        </div>
-
         {/* ----- 3. FOOTER ALT ÇİZGİSİ VE TELİF HAKKI ----- */}
         <div className="footer-bottom-bar">
           <p className="footer-copyright font-light">
-            © 2026 <strong>Baca Rapor</strong>. Tüm hakları saklıdır. Onaylı Baca, Güvenli Nefes.
+            © 2026 <strong>Baca Rapor</strong>. Tüm hakları saklıdır.
           </p>
           <div className="footer-legal-links">
             <button type="button" className="footer-legal-link-btn font-light" onClick={() => handleNavClick('corporate-accreditation')}>
@@ -253,8 +204,6 @@ export default function Footer({ onOpenAppointment }) {
             <button type="button" className="footer-legal-link-btn font-light" onClick={() => handleNavClick('corporate-prep')}>
               Müşteri Saha Hazırlık Kılavuzu (BKR-T-03)
             </button>
-            <span className="legal-dot">•</span>
-            <a href="#kvkk" className="footer-legal-link font-light">KVKK Aydınlatma Metni</a>
           </div>
         </div>
 
