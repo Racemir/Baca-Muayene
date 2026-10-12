@@ -45,7 +45,7 @@ export default function LeakageTestPage({ onOpenAppointment }) {
         title="Baca Sızdırmazlık Testi & Basınç Kaçak Raporu | Baca Rapor"
         description="EN 1443 ve TS EN 13384 standartlarında pozitif/negatif basınçlı baca sızdırmazlık testi. Dijital diferansiyel manometre ile gaz açım onaylı resmi raporlama."
         keywords="baca sızdırmazlık testi, baca basınç testi, baca kaçak testi, en 1443 baca testi, doğalgaz baca sızdırmazlık raporu"
-        canonicalUrl="https://bacarapor.com/hizmetler/baca-sizdirmazlik-testi"
+        canonicalUrl="https://bacaraporu.com.tr/hizmetler/baca-sizdirmazlik-testi"
       />
 
       {/* 1. ÜST SABİT NAVİGASYON */}

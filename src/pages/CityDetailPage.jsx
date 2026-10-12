@@ -55,7 +55,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
   const pageTitle = `${city.name} Baca Kontrol ve Sızdırmazlık Testi | Baca Rapor`;
   const pageDescription = `${city.name} genelinde ${city.gasCompany} onaylı akredite baca sızdırmazlık testi, TS EN 13384 kesit uygunluk muayenesi ve periyodik baca kontrol raporu.`;
   const pageKeywords = `${city.name} baca kontrol, ${city.name} baca sızdırmazlık testi, ${city.name} baca raporu, ${city.gasCompany} baca onay, ${city.name} doğalgaz baca muayenesi, ${city.name} periyodik baca kontrolü`;
-  const canonicalUrl = `https://bacarapor.com/iller/${city.slug}`;
+  const canonicalUrl = `https://bacaraporu.com.tr/iller/${city.slug}`;
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -67,13 +67,13 @@ export default function CityDetailPage({ onOpenAppointment }) {
             "@type": "ListItem",
             "position": 1,
             "name": "Ana Sayfa",
-            "item": "https://bacarapor.com/"
+            "item": "https://bacaraporu.com.tr/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Hizmet Bölgelerimiz",
-            "item": "https://bacarapor.com/iller"
+            "item": "https://bacaraporu.com.tr/iller"
           },
           {
             "@type": "ListItem",

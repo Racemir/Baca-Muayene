@@ -33,7 +33,7 @@ export default function CorporatePage({ onOpenAppointment }) {
         title="Kurumsal | Akreditasyon & Muayene Standartlarımız - Baca Rapor"
         description="Baca Rapor hakkında: TS EN ISO/IEC 17020 akreditasyon vizyonu, 6 aşamalı kalite kontrol süreci ve bağımsız muayene prosedürleri."
         keywords="baca raporu kurumsal, ts en iso 17020 akreditasyon, baca kontrol standartları, baca muayene kalite prosedürü"
-        canonicalUrl="https://bacarapor.com/kurumsal"
+        canonicalUrl="https://bacaraporu.com.tr/kurumsal"
       />
       
       {/* 1. ÜST SABİT NAVİGASYON */}

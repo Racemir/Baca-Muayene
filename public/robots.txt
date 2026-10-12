@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # XML Sitemap
-Sitemap: https://bacarapor.com/sitemap.xml
+Sitemap: https://bacaraporu.com.tr/sitemap.xml

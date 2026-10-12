@@ -45,7 +45,7 @@ export default function PeriodicInspectionPage({ onOpenAppointment }) {
         title="Periyodik Baca Kontrolü & Robotik Kamera Muayenesi | Baca Rapor"
         description="Binaların Yangından Korunması Yönetmeliği gereğince yılda 1 zorunlu periyodik baca kontrolü. 360° robotik kameralı kurum ve çekiş denetimi."
         keywords="periyodik baca kontrolü, baca kamera kontrolü, periyodik baca muayene raporu, merkezi kazan dairesi baca muayenesi"
-        canonicalUrl="https://bacarapor.com/hizmetler/periyodik-baca-kontrolleri"
+        canonicalUrl="https://bacaraporu.com.tr/hizmetler/periyodik-baca-kontrolleri"
       />
 
       {/* 1. ÜST SABİT NAVİGASYON */}

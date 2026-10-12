@@ -54,7 +54,7 @@ export default function CitiesPage({ onOpenAppointment }) {
         title="81 İl Akredite Baca Kontrol ve Sızdırmazlık Muayenesi | Baca Rapor"
         description="Türkiye'nin 81 ilinde yetkili gaz dağıtım kuruluşları (İGDAŞ, Başkentgaz, İzmirgaz vb.) onaylı akredite baca sızdırmazlık testi ve kontrol hizmetleri."
         keywords="türkiye baca kontrol, 81 il baca muayenesi, baca sızdırmazlık testi, gaz açım baca raporu, baca uygunluk belgesi"
-        canonicalUrl="https://bacarapor.com/iller"
+        canonicalUrl="https://bacaraporu.com.tr/iller"
       />
 
       {/* 1. ÜST NAVİGASYON */}

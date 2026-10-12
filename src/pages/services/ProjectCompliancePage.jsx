@@ -45,7 +45,7 @@ export default function ProjectCompliancePage({ onOpenAppointment }) {
         title="Baca Proje & Montaj Uygunluk Muayenesi | Baca Rapor"
         description="TS EN 13384 kesit hesaplamaları, CAD modelleme, lazerli çap ölçümü ve belediye iskan yapı kullanım onaylı baca uygunluk raporu."
         keywords="baca proje uygunluk muayenesi, baca kesit hesabı, ts en 13384, yapı kullanım baca raporu, iskan baca uygunluk"
-        canonicalUrl="https://bacarapor.com/hizmetler/proje-ve-montaj-uygunluk-muayenesi"
+        canonicalUrl="https://bacaraporu.com.tr/hizmetler/proje-ve-montaj-uygunluk-muayenesi"
       />
 
       {/* 1. ÜST SABİT NAVİGASYON */}

@@ -23,20 +23,20 @@ export default function HomePage({ onOpenAppointment, onSelectService }) {
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://bacarapor.com/#organization",
+        "@id": "https://bacaraporu.com.tr/#organization",
         "name": "Baca Rapor",
-        "url": "https://bacarapor.com",
-        "logo": "https://bacarapor.com/favicon.svg",
+        "url": "https://bacaraporu.com.tr",
+        "logo": "https://bacaraporu.com.tr/favicon.svg",
         "telephone": "+905367068125",
         "sameAs": []
       },
       {
         "@type": "WebSite",
-        "@id": "https://bacarapor.com/#website",
-        "url": "https://bacarapor.com",
+        "@id": "https://bacaraporu.com.tr/#website",
+        "url": "https://bacaraporu.com.tr",
         "name": "Baca Rapor",
         "publisher": {
-          "@id": "https://bacarapor.com/#organization"
+          "@id": "https://bacaraporu.com.tr/#organization"
         }
       }
     ]
@@ -49,7 +49,7 @@ export default function HomePage({ onOpenAppointment, onSelectService }) {
         title="Baca Rapor | Akredite Baca Sızdırmazlık Testi ve Muayene Raporu"
         description="Türkiye genelinde 81 ilde gaz açım onaylı baca sızdırmazlık testi, proje uygunluk muayenesi ve periyodik baca kontrol raporlama hizmetleri."
         keywords="baca kontrol, baca sızdırmazlık testi, baca muayene raporu, igdaş baca raporu, başkentgaz baca uygunluk, doğalgaz baca uygunluk"
-        canonicalUrl="https://bacarapor.com/"
+        canonicalUrl="https://bacaraporu.com.tr/"
         schemaData={homeSchema}
       />
       
