@@ -10,7 +10,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowUpRight, Gauge, FileCheck2, Camera } from 'lucide-react';
+import { ArrowUpRight, Gauge, FileCheck2, ShieldCheck } from 'lucide-react';
 import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.jpg';
 import imgProjeMontaj from '../../assets/images/service-proje-montaj.jpg';
 import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.jpg';
@@ -46,10 +46,10 @@ export default function ServicesCards() {
       title: 'Periyodik Baca Kontrolleri',
       path: '/hizmetler/periyodik-baca-kontrolleri',
       tag: 'Yıllık Yasal Muayene',
-      icon: Camera,
-      description: 'Yüksek çözünürlüklü endoskopik kamera robotlarıyla baca içi deformasyon, kurum birikimi ve tıkanıklıkların taranarak fotoğraflı raporlanması.',
+      icon: ShieldCheck,
+      description: 'Baca hatlarının yapısal bütünlüğü, çekiş performansı, kurum birikimi ve tıkanıklıkların düzenli denetlenerek fotoğraflı raporlanması.',
       image: imgPeriyodik,
-      badge: 'Robotik Kamera',
+      badge: 'Yıllık Muayene & Denetim',
     },
   ];
 

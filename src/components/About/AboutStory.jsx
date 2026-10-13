@@ -101,7 +101,7 @@ export default function AboutStory() {
             <div className="image-badge badge-bottom-right">
               <CheckCircle2 size={18} className="badge-icon-highlight" />
               <div>
-                <span className="badge-title font-semibold">TS 11388 & EN 1443</span>
+                <span className="badge-title font-semibold">TS EN 15287 & TS 7363</span>
                 <span className="badge-subtitle">Resmi Standart Uyumu</span>
               </div>
             </div>

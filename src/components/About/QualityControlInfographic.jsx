@@ -31,7 +31,7 @@ export default function QualityControlInfographic({ onOpenAppointment }) {
       category: 'MÜHENDİSLİK & PROJE TETKİKİ',
       icon: FileSearch,
       desc: 'Mimari ve mekanik tesisat projeleri, baca şaft güzergahı, cihaz ısıl kapasiteleri ve baca çapı kesit hesaplamaları (TS EN 13384) ulusal standartlar çerçevesinde detaylı ön tetkike tabi tutulur.',
-      metric: 'TS 11388 & TS EN 13384',
+      metric: 'TS EN 15287 & TS 7363',
       badge: 'Masaüstü Proje Tetkiki',
       highlight: 'Doğru Kesit & Güzergah'
     },
@@ -105,7 +105,7 @@ export default function QualityControlInfographic({ onOpenAppointment }) {
           Kalite Kontrol ve <span className="text-accent-glow">Denetim Metodolojisi</span>
         </h3>
         <p className="section-subtitle font-regular">
-          TS 11388 ve EN 1443 Avrupa normlarında yürütülen 6 aşamalı sistematik infografik denetim döngümüz ile yaşam ve çalışma alanlarınızda maksimum güvenlik sağlıyoruz.
+          TS EN 15287-1, TS EN 15287-2 ve TS 7363 standartlarında sürdürülen yüksek hassasiyetli 6 aşamalı denetim metodolojimiz ile yaşam ve çalışma alanlarınızda maksimum güvenlik sağlıyoruz.
         </p>
       </div>
 
@@ -243,7 +243,7 @@ export default function QualityControlInfographic({ onOpenAppointment }) {
                   <CheckCircle2 size={18} />
                 </div>
                 <div>
-                  <strong className="font-semibold text-white">TS 11388 Standart Uyumu:</strong>
+                  <strong className="font-semibold text-white">TS EN 15287 & TS 7363 Standart Uyumu:</strong>
                   <span> Baca şaftlarının yangın direnci ve boyutlandırma kurallarına tam riayet.</span>
                 </div>
               </div>

@@ -606,7 +606,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     </div>
                     <div className="direct-perk-row">
                       <ShieldCheck size={16} className="perk-check-icon" />
-                      <span>TS EN 13384 ve TS 11388 Standartlarına Tam Uyum</span>
+                      <span>TS EN 15287 ve TS 7363 Standartlarına Tam Uyum</span>
                     </div>
                   </div>
                 </div>

@@ -142,7 +142,7 @@ export default function PeriodicInspectionPage({ onOpenAppointment }) {
               <div className="service-hero-media">
                 <img 
                   src={imgPeriyodik} 
-                  alt="Endoskopik Robotik Kamera ile Periyodik Baca Kontrolü" 
+                  alt="Periyodik Baca Kontrolü ve Muayenesi" 
                   className="hero-main-img"
                   loading="eager"
                 />
@@ -150,9 +150,9 @@ export default function PeriodicInspectionPage({ onOpenAppointment }) {
                 <div className="hero-media-badge-tag">
                   <div className="badge-tag-info">
                     <span className="badge-status-dot"></span>
-                    <span className="badge-tag-text">Endoskopik Optik Tarama Aktif</span>
+                    <span className="badge-tag-text">Periyodik Kontrol & Denetim</span>
                   </div>
-                  <span className="badge-tag-meta">360° Pan & Tilt Sensör</span>
+                  <span className="badge-tag-meta">Yıllık Standart Muayene</span>
                 </div>
               </div>
 

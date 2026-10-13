@@ -148,7 +148,7 @@ export default function CorporatePreview() {
               <span className="subpage-tag font-medium">// 03. 6 ADIM İNFOGRAFİK</span>
               <h4 className="subpage-title font-semibold">Kalite Kontrol Sistemi</h4>
               <p className="subpage-desc font-regular">
-                TS 11388 ve EN 1443 Avrupa normlarında yürütülen sıfır hata denetim metodolojimiz.
+                TS EN 15287-1, TS EN 15287-2 ve TS 7363 standartlarında sürdürülen yüksek hassasiyetli denetim metodolojimiz.
               </p>
             </div>
             <div className="subpage-arrow">
