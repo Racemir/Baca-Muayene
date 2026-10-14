@@ -10,24 +10,28 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 24px 0;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  background: transparent;
+  padding: 10px 0;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Sayfa aşağı kaydırıldığında devreye giren koyu cam efekti */
 .navbar-header.navbar-scrolled {
-  padding: 16px 0;
-  background: rgba(5, 5, 5, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 0;
+  background-color: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-container {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
 }
 
@@ -45,6 +49,13 @@
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+.navbar-logo {
+  width: 200px;
+  height: auto;
+  display: block;
+  transition: width 0.25s ease;
 }
 
 .brand-icon-box {
@@ -88,12 +99,12 @@
   display: flex;
   align-items: center;
   gap: 32px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 8px 24px;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* background: rgba(255, 255, 255, 0.03); */
+  padding: 8px 24px 0 24px;
+  /* border-radius: 9999px; */
+  /* border: 1px solid rgba(255, 255, 255, 0.06); */
+  /* backdrop-filter: blur(12px); */
+  /* -webkit-backdrop-filter: blur(12px); */
 }
 
 .nav-link {
@@ -166,8 +177,8 @@
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.22s ease;
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.22s ease;
   z-index: 1050;
 }
 
@@ -357,7 +368,7 @@
   background: transparent;
   border: none;
   color: var(--text-white);
-  padding: 6px;
+  padding: 6px 6px 0 6px;
 }
 
 /* --------------------------------------------------------------------------
@@ -451,6 +462,14 @@
    RESPONSIVE UYUMLULUK
    -------------------------------------------------------------------------- */
 @media (max-width: 960px) {
+  .navbar-container {
+    align-items: flex-end;
+  }
+
+  .navbar-logo {
+    width: 175px;
+  }
+
   .navbar-nav-links {
     display: none;
   }
@@ -468,11 +487,18 @@
   }
 }
 
+@media (max-width: 480px) {
+  .navbar-logo {
+    width: 140px;
+  }
+}
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

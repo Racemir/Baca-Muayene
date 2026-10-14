@@ -19,6 +19,7 @@ import {
   Camera 
 } from 'lucide-react';
 import './Navbar.css';
+import Logo from './Logo';
 
 export default function Navbar({ onOpenAppointment }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -135,19 +136,14 @@ export default function Navbar({ onOpenAppointment }) {
     <header className={`navbar-header ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container navbar-container">
         
-        {/* ----- 1. LOGO ALANI ("BACA RAPOR") ----- */}
+        {/* ----- 1. LOGO ALANI ("BACA RAPORU") ----- */}
         <button 
           type="button" 
           className="navbar-brand-btn" 
           onClick={() => handleNavClick('home')}
-          title="Baca Rapor - Ana Sayfa"
+          title="Baca Raporu - Ana Sayfa"
         >
-          <div className="brand-icon-box">
-            <ShieldCheck size={22} className="brand-svg-icon" />
-          </div>
-          <span className="brand-text">
-            BACA <span className="brand-text-accent">RAPOR</span>
-          </span>
+          <Logo />
         </button>
 
         {/* ----- 2. MASAÜSTÜ ÇOKLU SAYFA MENÜ LİNKLERİ ----- */}
