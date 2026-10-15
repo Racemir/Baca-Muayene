@@ -141,6 +141,69 @@
   flex-shrink: 0;
 }
 
+.footer-map-badge-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-map-badge-link:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(77, 208, 225, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.footer-map-badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(77, 208, 225, 0.12);
+  border: 1px solid rgba(77, 208, 225, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4dd0e1;
+  flex-shrink: 0;
+}
+
+.footer-map-badge-text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.footer-map-badge-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.footer-map-badge-desc {
+  font-size: 11px;
+  color: #8c8c96;
+  line-height: 1.35;
+}
+
+.footer-map-badge-arrow {
+  color: #8c8c96;
+  transition: color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.footer-map-badge-link:hover .footer-map-badge-arrow {
+  color: #4dd0e1;
+  transform: translate(2px, -2px);
+}
+
 /* --------------------------------------------------------------------------
    ÖNE ÇIKAN İLLER SEO BAĞLANTILARI
    -------------------------------------------------------------------------- */

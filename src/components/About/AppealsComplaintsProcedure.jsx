@@ -36,7 +36,7 @@ export default function AppealsComplaintsProcedure() {
     setSubmitError('');
 
     try {
-      const response = await fetch('https://formspree.io/f/mgaolegn', {
+      const response = await fetch('https://formsubmit.co/ajax/istanbulbacaraporu@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,8 @@ export default function AppealsComplaintsProcedure() {
           'E-Posta': formData.email,
           'Rapor / Dosya No': formData.reportNo || 'Belirtilmedi',
           'Gerekçe / Detay': formData.details,
-          '_subject': `[BKR Resmi Başvuru] ${formData.type} - ${formData.fullName}`
+          '_subject': `[BKR Resmi Başvuru] ${formData.type} - ${formData.fullName}`,
+          '_template': 'table'
         })
       });
 
@@ -58,7 +59,7 @@ export default function AppealsComplaintsProcedure() {
         setIsSubmitted(true);
       } else {
         const data = await response.json();
-        setSubmitError(data.error || 'Başvuru gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.');
+        setSubmitError(data.message || 'Başvuru gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.');
       }
     } catch (error) {
       setSubmitError('Bağlantı hatası oluştu. Lütfen internet bağlantınızı kontrol ediniz.');
@@ -294,7 +295,7 @@ export default function AppealsComplaintsProcedure() {
                 Başvurunuz Kayıt Altına Alındı
               </h4>
               <p className="font-regular" style={{ color: '#a0a0ad', maxWidth: '500px' }}>
-                Sayın <strong>{formData.fullName}</strong>, başvurunuz resmi olarak <strong>surmelibacaraporu@gmail.com</strong> adresine iletilmiştir. ISO 17020 Madde 7.5 prosedürü uyarınca en geç <strong>1 hafta içinde</strong> yazılı teyit mektubu tarafınıza ulaştırılacak ve en geç <strong>30 gün içinde</strong> bağımsız heyet kararı tebliğ edilecektir.
+                Sayın <strong>{formData.fullName}</strong>, başvurunuz resmi olarak <strong>istanbulbacaraporu@gmail.com</strong> adresine iletilmiştir. ISO 17020 Madde 7.5 prosedürü uyarınca en geç <strong>1 hafta içinde</strong> yazılı teyit mektubu tarafınıza ulaştırılacak ve en geç <strong>30 gün içinde</strong> bağımsız heyet kararı tebliğ edilecektir.
               </p>
               <button 
                 type="button" 

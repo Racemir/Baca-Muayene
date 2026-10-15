@@ -86,10 +86,15 @@ export default function CityDetailPage({ onOpenAppointment }) {
       {
         "@type": "LocalBusiness",
         "@id": `${canonicalUrl}#localbusiness`,
-        "name": `Baca Rapor - ${city.name} Baca Muayene ve Kontrol`,
+        "name": `Baca Raporu - ${city.name} Baca Muayene ve Kontrol`,
         "description": pageDescription,
         "url": canonicalUrl,
         "telephone": "+905367068125",
+        "email": "istanbulbacaraporu@gmail.com",
+        "hasMap": "https://share.google/FlGwC154l0NluMoQO",
+        "sameAs": [
+          "https://share.google/FlGwC154l0NluMoQO"
+        ],
         "areaServed": {
           "@type": "AdministrativeArea",
           "name": city.name
@@ -113,10 +118,36 @@ export default function CityDetailPage({ onOpenAppointment }) {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await fetch('https://formsubmit.co/ajax/istanbulbacaraporu@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'Talep Türü': `İl Sayfası Hızlı Teklif (${city.name})`,
+          'Şehir': city.name,
+          'İlçe / Bölge': formData.district || 'Belirtilmedi',
+          'Ad Soyad': formData.fullName,
+          'Telefon': formData.phone,
+          'Hizmet': formData.serviceType,
+          'Mesaj': formData.message || 'Belirtilmedi',
+          '_subject': `[BKR İl Teklif] ${city.name} - ${formData.fullName}`,
+          '_template': 'table'
+        })
+      });
+    } catch (err) {
+      // Hata olsa dahi kullanıcıya onay göster
+    } finally {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }
   };
 
   // WhatsApp doğrudan bağlantı metni

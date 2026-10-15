@@ -176,15 +176,48 @@ export default function Footer({ onOpenAppointment }) {
               </li>
               <li>
                 <Mail size={16} className="contact-icon" />
-                <a href="mailto:surmelibacaraporu@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }} className="font-regular">
-                  surmelibacaraporu@gmail.com
+                <a href="mailto:istanbulbacaraporu@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }} className="font-regular">
+                  istanbulbacaraporu@gmail.com
                 </a>
               </li>
               <li>
                 <MapPin size={16} className="contact-icon" />
-                <span className="font-regular">Türkiye Geneli 81 İl Saha Hizmeti</span>
+                <a 
+                  href="https://share.google/FlGwC154l0NluMoQO" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ color: 'inherit', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }} 
+                  className="font-regular"
+                  title="Google Haritalar'da Konumu Aç"
+                >
+                  <span>İstanbul İGDAŞ Baca Raporu</span>
+                  <ArrowUpRight size={13} style={{ color: '#4dd0e1' }} />
+                </a>
+              </li>
+              <li>
+                <span className="font-regular" style={{ fontSize: '12px', color: '#6e6e78', paddingLeft: '28px' }}>
+                  Türkiye Geneli 81 İl Saha Hizmeti
+                </span>
               </li>
             </ul>
+
+            {/* Google Haritalar Konum Rozet Butonu */}
+            <a 
+              href="https://share.google/FlGwC154l0NluMoQO" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="footer-map-badge-link"
+              title="Google İşletme & Harita Konumu"
+            >
+              <div className="footer-map-badge-icon">
+                <MapPin size={16} />
+              </div>
+              <div className="footer-map-badge-text">
+                <span className="footer-map-badge-title">Google Harita Konumu</span>
+                <span className="footer-map-badge-desc">Yol Tarifi Al & Konumu Gör</span>
+              </div>
+              <ArrowUpRight size={14} className="footer-map-badge-arrow" />
+            </a>
           </div>
 
         </div>

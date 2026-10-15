@@ -24,17 +24,50 @@ export default function HomePage({ onOpenAppointment, onSelectService }) {
       {
         "@type": "Organization",
         "@id": "https://bacaraporu.com.tr/#organization",
-        "name": "Baca Rapor",
+        "name": "Baca Raporu",
+        "alternateName": "İstanbul İGDAŞ Baca Raporu",
         "url": "https://bacaraporu.com.tr",
         "logo": "https://bacaraporu.com.tr/favicon.svg",
         "telephone": "+905367068125",
-        "sameAs": []
+        "email": "istanbulbacaraporu@gmail.com",
+        "sameAs": [
+          "https://share.google/FlGwC154l0NluMoQO"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://bacaraporu.com.tr/#localbusiness",
+        "name": "İstanbul İGDAŞ Baca Raporu",
+        "url": "https://bacaraporu.com.tr",
+        "image": "https://bacaraporu.com.tr/favicon.svg",
+        "telephone": "+905367068125",
+        "email": "istanbulbacaraporu@gmail.com",
+        "priceRange": "$$",
+        "hasMap": "https://share.google/FlGwC154l0NluMoQO",
+        "sameAs": [
+          "https://share.google/FlGwC154l0NluMoQO"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "İstanbul",
+          "addressCountry": "TR"
+        },
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "İstanbul"
+          },
+          {
+            "@type": "Country",
+            "name": "Türkiye"
+          }
+        ]
       },
       {
         "@type": "WebSite",
         "@id": "https://bacaraporu.com.tr/#website",
         "url": "https://bacaraporu.com.tr",
-        "name": "Baca Rapor",
+        "name": "Baca Raporu",
         "publisher": {
           "@id": "https://bacaraporu.com.tr/#organization"
         }

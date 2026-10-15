@@ -39,8 +39,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1.02);
-  transition: transform 8s ease;
   pointer-events: none;
 }
 

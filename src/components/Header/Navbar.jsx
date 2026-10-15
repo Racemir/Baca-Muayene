@@ -16,7 +16,8 @@ import {
   ChevronDown, 
   Gauge, 
   FileCheck2, 
-  Camera 
+  Camera,
+  MapPin
 } from 'lucide-react';
 import './Navbar.css';
 import Logo from './Logo';
@@ -247,6 +248,17 @@ export default function Navbar({ onOpenAppointment }) {
           >
             İletişim
           </button>
+
+          <a 
+            href="https://share.google/FlGwC154l0NluMoQO" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="nav-link nav-map-link"
+            title="Google Haritalar - İstanbul İGDAŞ Baca Raporu"
+          >
+            <MapPin size={13} style={{ color: '#4dd0e1' }} />
+            <span>Harita</span>
+          </a>
         </nav>
 
         {/* ----- 3. SAĞ AKSİYON BUTONU (RANDEVU AL) ----- */}
@@ -339,6 +351,21 @@ export default function Navbar({ onOpenAppointment }) {
           >
             İletişim
           </button>
+
+          <a 
+            href="https://share.google/FlGwC154l0NluMoQO" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="mobile-nav-link"
+            title="Google Haritalar - İstanbul İGDAŞ Baca Raporu"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#4dd0e1' }}
+          >
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <MapPin size={16} />
+              <span>Harita & Konum (Google)</span>
+            </span>
+            <ArrowUpRight size={15} />
+          </a>
 
           <button 
             type="button"

@@ -140,6 +140,25 @@
   border-radius: 2px;
 }
 
+.nav-link.nav-map-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #c0c0cc;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.nav-link.nav-map-link:hover {
+  background: rgba(77, 208, 225, 0.12);
+  border-color: rgba(77, 208, 225, 0.35);
+  color: #4dd0e1;
+}
+
 /* --------------------------------------------------------------------------
    HİZMETLER AÇILIR DROPDOWN MENÜSÜ (HOVER TETİKLEME)
    -------------------------------------------------------------------------- */
