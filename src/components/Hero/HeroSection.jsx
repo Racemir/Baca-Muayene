@@ -48,14 +48,13 @@ export default function HeroSection({ onOpenAppointment }) {
         </div>
 
         <h1 className="hero-title font-bold">
-          Onaylı Baca <br className="hero-title-break" />
-          <span className="hero-title-highlight font-medium">Güvenli Nefes</span>
+          Baca Raporu
         </h1>
-        <p className="hero-kicker font-medium">Yetkili Baca Raporu ve Sızdırmazlık Testi</p>
+        <p className="hero-kicker font-medium">Onaylı Baca, Güvenli Nefes</p>
 
         {/* Kısa Destekleyici Açıklama */}
         <p className="hero-description font-regular">
-          Endüstriyel tesisler, ticari binalar ve yaşam alanlarınız için ulusal ve uluslararası standartlarda baca muayenesi, sızdırmazlık testi ve resmi uygunluk raporlaması sunuyoruz.
+          Baca raporu ve sızdırmazlık testi: endüstriyel tesis, ticari bina ve konutlar için gaz açımına uygun resmi muayene ve uygunluk raporu.
         </p>
 
         {/* Aksiyon Butonları Grubu ("Randevu Al" ve "WhatsApp İletişim") */}

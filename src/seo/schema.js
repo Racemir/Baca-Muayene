@@ -38,6 +38,8 @@ export function organizationSchema() {
     logo: {
       '@type': 'ImageObject',
       url: SITE.logo,
+      width: 512,
+      height: 512,
     },
     image: SITE.ogImage,
     telephone: SITE.phone,
@@ -138,7 +140,7 @@ export function homeGraphSchema() {
         '@type': 'WebPage',
         '@id': `${SITE.url}/#webpage`,
         url: absUrl('/'),
-        name: 'Baca Raporu | Sızdırmazlık Testi ve Uygunluk',
+        name: 'Baca Raporu | Sızdırmazlık Testi ve Gaz Açımı',
         isPartOf: { '@id': `${SITE.url}/#website` },
         about: { '@id': `${SITE.url}/#organization` },
         inLanguage: 'tr-TR',

@@ -3,9 +3,9 @@ import { PRIORITY_CITY_SLUGS, absUrl } from './site.js';
 export const STATIC_SEO_ROUTES = [
   {
     path: '/',
-    title: 'Baca Raporu | Sızdırmazlık Testi ve Uygunluk',
+    title: 'Baca Raporu | Sızdırmazlık Testi ve Gaz Açımı',
     description:
-      'Yetkili baca raporu ve sızdırmazlık testi. 81 ilde gaz dağıtım onaylı doğalgaz baca uygunluk muayenesi, aynı gün saha ve hızlı resmi rapor.',
+      'Baca raporu ve sızdırmazlık testi. 81 ilde gaz açımı için yetkili doğalgaz baca uygunluk muayenesi, aynı gün saha ve resmi rapor.',
     keywords:
       'baca raporu, baca sızdırmazlık testi, doğalgaz baca raporu, baca uygunluk belgesi, baca muayenesi, İGDAŞ baca raporu',
     changefreq: 'weekly',

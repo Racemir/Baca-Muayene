@@ -1,7 +1,7 @@
 {
   "name": "Baca Raporu",
   "short_name": "Baca Raporu",
-  "description": "Yetkili baca raporu, sızdırmazlık testi ve doğalgaz baca uygunluk muayenesi.",
+  "description": "Baca raporu, sızdırmazlık testi ve doğalgaz baca uygunluk muayenesi.",
   "lang": "tr",
   "dir": "ltr",
   "start_url": "/",
@@ -11,10 +11,16 @@
   "theme_color": "#050505",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

@@ -15,7 +15,7 @@ export const SITE = {
   mapUrl: 'https://share.google/FlGwC154l0NluMoQO',
   ogImage: 'https://bacaraporu.com.tr/og-cover.webp',
   ogImageAlt: 'Baca Raporu — yetkili baca sızdırmazlık testi ve uygunluk raporu',
-  logo: 'https://bacaraporu.com.tr/favicon.svg',
+  logo: 'https://bacaraporu.com.tr/favicon-512x512.png',
   themeColor: '#050505',
   areaServed: 'Türkiye',
   foundingLocation: 'İstanbul',
