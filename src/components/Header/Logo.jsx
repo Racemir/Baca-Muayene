@@ -14,10 +14,8 @@ const Logo = ({
       <defs>
         <style>
           {`
-            @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap');
-            
             .text-main {
-              font-family: 'Cinzel', 'Times New Roman', serif;
+              font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
               font-size: 46px;
               /* Vector.svg'deki çift çizgili / konturlu görünüm */
               fill: none;

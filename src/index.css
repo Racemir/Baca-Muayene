@@ -76,6 +76,11 @@ body {
   flex-direction: column;
 }
 
+.route-fallback {
+  min-height: 100vh;
+  background: #050505;
+}
+
 /* --------------------------------------------------------------------------
    3. TİPOGRAFİ HİYERARŞİSİ (HELVETICA NEUE TYPOGRAPHY)
    -------------------------------------------------------------------------- */

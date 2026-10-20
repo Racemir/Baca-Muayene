@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { CITIES_DATA, getCityBySlug } from '../src/data/citiesData.js';
-import { getAllSeoRoutes } from '../src/seo/routes.js';
+import { STATIC_SEO_ROUTES, getCitySeo, withCanonical } from '../src/seo/routes.js';
 import {
   breadcrumbSchema,
   cityServiceSchema,
@@ -9,6 +9,11 @@ import {
   serviceSchema,
 } from '../src/seo/schema.js';
 import { SITE, absUrl, escapeHtml } from '../src/seo/site.js';
+
+function getAllSeoRoutes() {
+  const cityRoutes = CITIES_DATA.map((city) => getCitySeo(city));
+  return [...STATIC_SEO_ROUTES, ...cityRoutes].map(withCanonical);
+}
 
 function buildSitemapXml() {
   const today = new Date().toISOString().slice(0, 10);
@@ -110,6 +115,13 @@ function injectRouteSeo(html, route) {
     next = next.replace(
       new RegExp(`<meta ${attr}="${key}" content="[^"]*"\\s*\\/?>`),
       `<meta ${attr}="${key}" content="${value}" />`
+    );
+  }
+
+  if (route.path !== '/') {
+    next = next.replace(
+      /<!-- homepage-lcp-preload -->[\s\S]*?<!-- \/homepage-lcp-preload -->\s*/,
+      ''
     );
   }
 

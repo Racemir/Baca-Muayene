@@ -8,7 +8,6 @@
 
 import React from 'react';
 import { Calendar, ArrowRight, CheckCircle2, ChevronDown, MessageCircle } from 'lucide-react';
-import heroBgImage from '../../assets/images/hero-bg.webp';
 import './HeroSection.css';
 
 export default function HeroSection({ onOpenAppointment }) {
@@ -22,15 +21,16 @@ export default function HeroSection({ onOpenAppointment }) {
       {/* ----- 1. ARKA PLAN GÖRSELİ VE KARARTMA KATMANI ----- */}
       {/* Yüksek öncelikli (fetchPriority="high") ve optimize edilmiş arka plan görseli */}
       <div className="hero-background-image">
-        <img 
-          src={heroBgImage} 
-          alt="Yetkili baca raporu ve sızdırmazlık testi saha görseli" 
+        <img
+          src="/hero-bg-1600.webp"
+          srcSet="/hero-bg-960.webp 960w, /hero-bg-1600.webp 1600w"
+          sizes="100vw"
+          alt="Yetkili baca raporu ve sızdırmazlık testi saha görseli"
           className="hero-bg-img"
-          width={1920}
-          height={1080}
+          width={1600}
+          height={894}
           fetchPriority="high"
-          loading="eager"
-          decoding="async"
+          decoding="sync"
         />
         <div className="hero-overlay-gradient"></div>
         <div className="hero-overlay-grid"></div>
@@ -47,11 +47,11 @@ export default function HeroSection({ onOpenAppointment }) {
           </span>
         </div>
 
-        {/* Ana Başlık: "Onaylı Baca Güvenli Nefes" */}
         <h1 className="hero-title font-bold">
-          Yetkili Baca Raporu <br className="hero-title-break" />
-          <span className="hero-title-highlight font-medium">ve Sızdırmazlık Testi</span>
+          Onaylı Baca <br className="hero-title-break" />
+          <span className="hero-title-highlight font-medium">Güvenli Nefes</span>
         </h1>
+        <p className="hero-kicker font-medium">Yetkili Baca Raporu ve Sızdırmazlık Testi</p>
 
         {/* Kısa Destekleyici Açıklama */}
         <p className="hero-description font-regular">

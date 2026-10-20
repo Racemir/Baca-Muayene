@@ -7,17 +7,18 @@
       Misyon & Vizyon, 6 Aşamalı Kalite Kontrol İnfografiği)
    ========================================================================== */
 
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/Common/ScrollToTop';
 import HomePage from './pages/HomePage';
-import CorporatePage from './pages/CorporatePage';
-import LeakageTestPage from './pages/services/LeakageTestPage';
-import PeriodicInspectionPage from './pages/services/PeriodicInspectionPage';
-import ProjectCompliancePage from './pages/services/ProjectCompliancePage';
-import CitiesPage from './pages/CitiesPage';
-import CityDetailPage from './pages/CityDetailPage';
-import NotFoundPage from './pages/NotFoundPage';
+
+const CorporatePage = lazy(() => import('./pages/CorporatePage'));
+const LeakageTestPage = lazy(() => import('./pages/services/LeakageTestPage'));
+const PeriodicInspectionPage = lazy(() => import('./pages/services/PeriodicInspectionPage'));
+const ProjectCompliancePage = lazy(() => import('./pages/services/ProjectCompliancePage'));
+const CitiesPage = lazy(() => import('./pages/CitiesPage'));
+const CityDetailPage = lazy(() => import('./pages/CityDetailPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 export default function App() {
   // =========================================================================
@@ -44,7 +45,7 @@ export default function App() {
     <BrowserRouter>
       {/* Sayfa değişimlerinde ve çapa linklerinde tepeye kaydırıcı */}
       <ScrollToTop />
-      
+      <Suspense fallback={<div className="route-fallback" aria-hidden="true" />}>
       <Routes>
         {/* 1. EKRAN: ANA SAYFA */}
         <Route 
@@ -129,6 +130,7 @@ export default function App() {
           element={<NotFoundPage onOpenAppointment={handleOpenAppointment} />}
         />
       </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

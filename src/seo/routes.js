@@ -1,4 +1,3 @@
-import { CITIES_DATA } from '../data/citiesData.js';
 import { PRIORITY_CITY_SLUGS, absUrl } from './site.js';
 
 export const STATIC_SEO_ROUTES = [
@@ -76,19 +75,13 @@ export function getCitySeo(city) {
   };
 }
 
-export function getAllSeoRoutes() {
-  const cityRoutes = CITIES_DATA.map((city) => getCitySeo(city));
-  return [...STATIC_SEO_ROUTES, ...cityRoutes].map((route) => ({
+export function withCanonical(route) {
+  return {
     ...route,
     canonicalUrl: absUrl(route.path),
-  }));
+  };
 }
 
 export function getStaticSeo(path) {
   return STATIC_SEO_ROUTES.find((route) => route.path === path);
-}
-
-export function getSeoByPath(pathname) {
-  const normalized = pathname === '' ? '/' : pathname;
-  return getAllSeoRoutes().find((route) => route.path === normalized) || null;
 }
