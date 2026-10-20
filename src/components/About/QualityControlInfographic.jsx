@@ -202,9 +202,12 @@ export default function QualityControlInfographic({ onOpenAppointment }) {
           <div className="field-photo-container">
             <img 
               src={technicianInspectionImg} 
-              alt="Baca Kontrolü Uzman Teknisyeni Kaskad Sistemi Ölçümü" 
+              alt="Kaskad kazan dairesinde baca ölçümü" 
               className="field-real-img"
+              width={1200}
+              height={800}
               loading="lazy"
+              decoding="async"
             />
             <div className="field-photo-vignette"></div>
 

@@ -1241,6 +1241,8 @@
 .preview-split-visual {
   width: 100%;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
 }
 
 .preview-split-frame {
@@ -1384,6 +1386,11 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+}
+
+a.preview-subpage-card {
+  color: inherit;
+  text-decoration: none;
 }
 
 .preview-subpage-card {

@@ -7,9 +7,8 @@
    ========================================================================== */
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { 
-  ShieldCheck, 
   Menu, 
   X, 
   ArrowUpRight, 
@@ -128,42 +127,38 @@ export default function Navbar({ onOpenAppointment }) {
     }
   };
 
-  const isCorporatePage = location.pathname.startsWith('/kurumsal');
   const isServicesPage = location.pathname.startsWith('/hizmetler');
-  const isCitiesPage = location.pathname.startsWith('/iller');
-  const isHomePage = location.pathname === '/';
 
   return (
     <header className={`navbar-header ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container navbar-container">
         
         {/* ----- 1. LOGO ALANI ("BACA RAPORU") ----- */}
-        <button 
-          type="button" 
-          className="navbar-brand-btn" 
-          onClick={() => handleNavClick('home')}
+        <Link
+          to="/"
+          className="navbar-brand-btn"
           title="Baca Raporu - Ana Sayfa"
+          onClick={() => setIsMobileMenuOpen(false)}
         >
           <Logo />
-        </button>
+        </Link>
 
         {/* ----- 2. MASAÜSTÜ ÇOKLU SAYFA MENÜ LİNKLERİ ----- */}
         <nav className="navbar-nav-links">
-          <button 
-            type="button"
-            className={`nav-link ${isHomePage ? 'nav-link-active' : ''}`}
-            onClick={() => handleNavClick('home')}
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => `nav-link ${isActive ? 'nav-link-active' : ''}`}
           >
             Ana Sayfa
-          </button>
+          </NavLink>
 
-          <button 
-            type="button"
-            className={`nav-link ${isCorporatePage ? 'nav-link-active' : ''}`}
-            onClick={() => handleNavClick('corporate')}
+          <NavLink
+            to="/kurumsal"
+            className={({ isActive }) => `nav-link ${isActive ? 'nav-link-active' : ''}`}
           >
             Kurumsal
-          </button>
+          </NavLink>
 
           {/* ----- HİZMETLER VE AÇILIR DROPDOWN MENÜSÜ ----- */}
           <div 
@@ -197,9 +192,9 @@ export default function Navbar({ onOpenAppointment }) {
                     const IconComp = item.icon;
                     const isActive = location.pathname === item.path;
                     return (
-                      <button
+                      <Link
                         key={item.id}
-                        type="button"
+                        to={item.path}
                         className={`dropdown-item-row ${isActive ? 'item-row-active' : ''}`}
                         onClick={() => handleServiceSelect(item.path)}
                       >
@@ -211,43 +206,35 @@ export default function Navbar({ onOpenAppointment }) {
                           <span className="item-sub">{item.subtitle}</span>
                         </div>
                         <ArrowUpRight size={14} className="item-arrow" />
-                      </button>
+                      </Link>
                     );
                   })}
                 </div>
 
                 <div className="dropdown-panel-footer">
-                  <button
-                    type="button"
+                  <Link
+                    to="/kurumsal#saha-hazirlik"
                     className="dropdown-all-link"
-                    onClick={() => {
-                      setIsServicesDropdownOpen(false);
-                      navigate('/kurumsal#saha-hazirlik');
-                    }}
+                    onClick={() => setIsServicesDropdownOpen(false)}
                   >
                     <span>Saha Hazırlık Kılavuzu (BKR-T-03)</span>
                     <ArrowUpRight size={13} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          <button 
-            type="button"
-            className={`nav-link ${isCitiesPage ? 'nav-link-active' : ''}`}
-            onClick={() => handleNavClick('iller')}
+          <NavLink
+            to="/iller"
+            className={({ isActive }) => `nav-link ${isActive ? 'nav-link-active' : ''}`}
           >
             İller
-          </button>
+          </NavLink>
 
-          <button 
-            type="button"
-            className="nav-link"
-            onClick={() => handleNavClick('iletisim')}
-          >
+          <a href="/#iletisim" className="nav-link">
             İletişim
-          </button>
+          </a>
 
           <a 
             href="https://share.google/FlGwC154l0NluMoQO" 
@@ -288,21 +275,22 @@ export default function Navbar({ onOpenAppointment }) {
       {/* ----- 4. MOBİL AÇILIR MENÜ ALANI ----- */}
       {isMobileMenuOpen && (
         <div className="mobile-dropdown-menu">
-          <button 
-            type="button"
-            className={`mobile-nav-link ${isHomePage ? 'mobile-nav-active' : ''}`}
-            onClick={() => handleNavClick('home')}
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => `mobile-nav-link ${isActive ? 'mobile-nav-active' : ''}`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Ana Sayfa
-          </button>
+          </NavLink>
           
-          <button 
-            type="button"
-            className={`mobile-nav-link ${isCorporatePage ? 'mobile-nav-active' : ''}`}
-            onClick={() => handleNavClick('corporate')}
+          <NavLink
+            to="/kurumsal"
+            className={({ isActive }) => `mobile-nav-link ${isActive ? 'mobile-nav-active' : ''}`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Kurumsal
-          </button>
+          </NavLink>
 
           {/* Mobil Hizmetler ve Alt Menü */}
           <div className="mobile-services-section">
@@ -321,36 +309,36 @@ export default function Navbar({ onOpenAppointment }) {
                   const IconComp = item.icon;
                   const isActive = location.pathname === item.path;
                   return (
-                    <button
+                    <Link
                       key={item.id}
-                      type="button"
+                      to={item.path}
                       className={`mobile-sub-item ${isActive ? 'mobile-sub-active' : ''}`}
                       onClick={() => handleServiceSelect(item.path)}
                     >
                       <IconComp size={15} />
                       <span>{item.title}</span>
-                    </button>
+                    </Link>
                   );
                 })}
               </div>
             )}
           </div>
 
-          <button 
-            type="button"
-            className={`mobile-nav-link ${isCitiesPage ? 'mobile-nav-active' : ''}`}
-            onClick={() => handleNavClick('iller')}
+          <NavLink
+            to="/iller"
+            className={({ isActive }) => `mobile-nav-link ${isActive ? 'mobile-nav-active' : ''}`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             İller (Hizmet Bölgeleri)
-          </button>
+          </NavLink>
 
-          <button 
-            type="button"
+          <a
+            href="/#iletisim"
             className="mobile-nav-link"
-            onClick={() => handleNavClick('iletisim')}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             İletişim
-          </button>
+          </a>
 
           <a 
             href="https://share.google/FlGwC154l0NluMoQO" 

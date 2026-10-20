@@ -122,9 +122,12 @@ export default function MissionVision() {
         <div className="mv-strip-image-container">
           <img 
             src={cascadeBoilerImg} 
-            alt="Kaskad Kazan Dairesi ve Paslanmaz Baca Kollektörü" 
+            alt="Kaskad kazan dairesi ve paslanmaz baca kollektörü" 
             className="mv-strip-image"
+            width={1400}
+            height={500}
             loading="lazy"
+            decoding="async"
           />
           <div className="mv-strip-overlay"></div>
         </div>

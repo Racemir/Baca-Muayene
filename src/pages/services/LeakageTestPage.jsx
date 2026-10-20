@@ -13,7 +13,7 @@
    ========================================================================== */
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   Home, 
   ChevronRight, 
@@ -30,22 +30,40 @@ import {
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer/Footer';
 import SeoHead from '../../components/Common/SeoHead';
-import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.jpg';
-import imgProjeMontaj from '../../assets/images/service-proje-montaj.jpg';
-import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.jpg';
+import { getStaticSeo } from '../../seo/routes';
+import { absUrl } from '../../seo/site';
+import { breadcrumbSchema, serviceSchema } from '../../seo/schema';
+import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.webp';
+import imgProjeMontaj from '../../assets/images/service-proje-montaj.webp';
+import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.webp';
 import './ServiceDetailPage.css';
 
 export default function LeakageTestPage({ onOpenAppointment }) {
   const navigate = useNavigate();
+  const pageSeo = getStaticSeo('/hizmetler/baca-sizdirmazlik-testi');
 
   return (
     <div className="service-page-layout">
-      {/* Sızdırmazlık Testi SEO Tanımı */}
       <SeoHead
-        title="Baca Sızdırmazlık Testi & Basınç Kaçak Raporu | Baca Rapor"
-        description="EN 1443 ve TS EN 13384 standartlarında pozitif/negatif basınçlı baca sızdırmazlık testi. Dijital diferansiyel manometre ile gaz açım onaylı resmi raporlama."
-        keywords="baca sızdırmazlık testi, baca basınç testi, baca kaçak testi, en 1443 baca testi, doğalgaz baca sızdırmazlık raporu"
-        canonicalUrl="https://bacaraporu.com.tr/hizmetler/baca-sizdirmazlik-testi"
+        title={pageSeo.title}
+        description={pageSeo.description}
+        keywords={pageSeo.keywords}
+        canonicalUrl={absUrl(pageSeo.path)}
+        schemaData={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            breadcrumbSchema([
+              { name: 'Ana Sayfa', url: absUrl('/') },
+              { name: 'Baca Sızdırmazlık Testi', url: absUrl(pageSeo.path) },
+            ]),
+            serviceSchema({
+              name: 'Baca Sızdırmazlık Testi',
+              description: pageSeo.description,
+              url: absUrl(pageSeo.path),
+              serviceType: 'Baca sızdırmazlık ve basınç kaçağı testi',
+            }),
+          ],
+        }}
       />
 
       {/* 1. ÜST SABİT NAVİGASYON */}
@@ -57,22 +75,14 @@ export default function LeakageTestPage({ onOpenAppointment }) {
         <div className="service-breadcrumb-bar">
           <div className="container">
             <nav className="service-breadcrumb" aria-label="Ekmek Kırıntısı">
-              <button 
-                type="button" 
-                className="service-breadcrumb-link"
-                onClick={() => navigate('/')}
-              >
+              <Link to="/" className="service-breadcrumb-link">
                 <Home size={13} />
                 <span>Ana Sayfa</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="service-breadcrumb-separator" />
-              <button 
-                type="button" 
-                className="service-breadcrumb-link"
-                onClick={() => navigate('/#hizmetler')}
-              >
+              <Link to="/#hizmetler" className="service-breadcrumb-link">
                 <span>Hizmetler</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="service-breadcrumb-separator" />
               <span className="service-breadcrumb-current">Baca Sızdırmazlık Testi</span>
             </nav>
@@ -100,7 +110,7 @@ export default function LeakageTestPage({ onOpenAppointment }) {
                 </h1>
 
                 <p className="service-hero-lead">
-                  Pozitif ve negatif basınçlı baca hatlarında kalibre edilmiş dijital mikro-manometre cihazlarıyla sızıntı debisi tespiti ve EN 1443 standartlarında akredite sızdırmazlık sınıfı doğrulaması.
+                  Pozitif ve negatif basınçlı baca hatlarında kalibre edilmiş dijital mikro-manometre cihazlarıyla sızıntı debisi tespiti ve EN 1443 standartlarında sızdırmazlık sınıfı doğrulaması.
                 </p>
 
                 {/* Hızlı Parametre Kutucukları */}
@@ -142,9 +152,13 @@ export default function LeakageTestPage({ onOpenAppointment }) {
               <div className="service-hero-media">
                 <img 
                   src={imgSizdirmazlik} 
-                  alt="Dijital Manometre Cihazı ile Baca Sızdırmazlık Testi" 
+                  alt="Dijital manometre ile baca sızdırmazlık testi" 
                   className="hero-main-img"
+                  width={900}
+                  height={720}
+                  fetchPriority="high"
                   loading="eager"
+                  decoding="async"
                 />
                 <div className="hero-image-overlay"></div>
                 <div className="hero-media-badge-tag">
@@ -188,7 +202,7 @@ export default function LeakageTestPage({ onOpenAppointment }) {
                   </p>
 
                   <p>
-                    Sızdırmazlık testi, sadece görsel bir kontrol değil; akredite diferansiyel manometrelerle yapılan, metrekare başına kaçan hava miktarını (VL) ölçen ve baca hattının güvenliğini matematiksel olarak kanıtlayan bilimsel bir ölçüm yöntemidir.
+                    Sızdırmazlık testi, sadece görsel bir kontrol değil; kalibre diferansiyel manometrelerle yapılan, metrekare başına kaçan hava miktarını (VL) ölçen ve baca hattının güvenliğini matematiksel olarak kanıtlayan bilimsel bir ölçüm yöntemidir.
                   </p>
                 </div>
 
@@ -275,7 +289,7 @@ export default function LeakageTestPage({ onOpenAppointment }) {
                   </div>
                   <h3 className="legal-card-title">İSG Kanunu & Sigorta Hasar Teminatı</h3>
                   <p className="legal-card-desc">
-                    6331 sayılı İş Sağlığı ve Güvenliği Kanunu kapsamında akredite baca testi yapılmamış binalarda zehirlenme veya yangın gerçekleşirse bina yönetimi şahsen cezai sorumludur; sigorta şirketleri hasar ödemesi yapmaz.
+                    6331 sayılı İş Sağlığı ve Güvenliği Kanunu kapsamında yetkili baca testi yapılmamış binalarda zehirlenme veya yangın gerçekleşirse bina yönetimi şahsen cezai sorumludur; sigorta şirketleri hasar ödemesi yapmayabilir.
                   </p>
                   <span className="legal-card-law">6331 Sayılı Kanun & Yangın Sigortası</span>
                 </div>
@@ -364,7 +378,7 @@ export default function LeakageTestPage({ onOpenAppointment }) {
               </ul>
 
               <div className="prep-card-note">
-                <span>⚠️ <strong>Yasal Hatırlatma:</strong> Saha kontrollerinde ön hazırlıkların yetersiz olması nedeniyle testin yapılamaması durumunda, akreditasyon mevzuatı gereğince tekrar ücreti ve servis bedeli tahakkuk ettirilir.</span>
+                <span>⚠️ <strong>Yasal Hatırlatma:</strong> Saha kontrollerinde ön hazırlıkların yetersiz olması nedeniyle testin yapılamaması durumunda, hizmet sözleşmesi gereğince tekrar ücreti ve servis bedeli tahakkuk ettirilir.</span>
               </div>
             </div>
 
@@ -442,7 +456,7 @@ export default function LeakageTestPage({ onOpenAppointment }) {
                   <span className="block-tag">// DİĞER HİZMETLERİMİZ</span>
                   <h3>İlgili Muayene ve Denetim Hizmetleri</h3>
                 </div>
-                <p>Tüm baca denetimlerinizi tek merkezden akredite olarak tamamlayın.</p>
+                <p>Tüm baca denetimlerinizi tek merkezden, standartlara uygun şekilde tamamlayın.</p>
               </div>
 
               <div className="other-services-grid">

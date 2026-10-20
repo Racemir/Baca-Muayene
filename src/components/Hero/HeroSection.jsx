@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Calendar, ArrowRight, CheckCircle2, ChevronDown, MessageCircle } from 'lucide-react';
-import heroBgImage from '../../assets/images/hero-bg.jpg';
+import heroBgImage from '../../assets/images/hero-bg.webp';
 import './HeroSection.css';
 
 export default function HeroSection({ onOpenAppointment }) {
@@ -24,8 +24,10 @@ export default function HeroSection({ onOpenAppointment }) {
       <div className="hero-background-image">
         <img 
           src={heroBgImage} 
-          alt="Yetkili Baca Kontrol ve Muayene Hizmetleri" 
+          alt="Yetkili baca raporu ve sızdırmazlık testi saha görseli" 
           className="hero-bg-img"
+          width={1920}
+          height={1080}
           fetchPriority="high"
           loading="eager"
           decoding="async"
@@ -41,14 +43,14 @@ export default function HeroSection({ onOpenAppointment }) {
         <div className="hero-badge">
           <span className="hero-badge-dot"></span>
           <span className="hero-badge-text font-medium">
-            TÜRKİYE GENELİ YETKİLİ VE AKREDİTE BACA DENETİMİ
+            TÜRKİYE GENELİ YETKİLİ BACA DENETİMİ
           </span>
         </div>
 
         {/* Ana Başlık: "Onaylı Baca Güvenli Nefes" */}
         <h1 className="hero-title font-bold">
-          Onaylı Baca <br className="hero-title-break" />
-          <span className="hero-title-highlight font-medium">Güvenli Nefes</span>
+          Yetkili Baca Raporu <br className="hero-title-break" />
+          <span className="hero-title-highlight font-medium">ve Sızdırmazlık Testi</span>
         </h1>
 
         {/* Kısa Destekleyici Açıklama */}

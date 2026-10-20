@@ -22,8 +22,8 @@ export default function AccreditationCommitment() {
     {
       id: 1,
       icon: Scale,
-      title: 'A Tipi Bağımsız Muayene Kuruluşu',
-      desc: 'Muayene ettiğimiz baca sistemlerinin tasarımcısı, imalatçısı, tedarikçisi, montajcısı, satıcısı, sahibi veya bakımcısı değiliz; ne de bu tarafların yetkili temsilcisiyiz. Tam bağımsız 3. taraf muayene kuruluşu olarak faaliyet gösteririz.'
+      title: 'Bağımsız üçüncü taraf muayene',
+      desc: 'Muayene ettiğimiz baca sistemlerinin tasarımcısı, imalatçısı, tedarikçisi, montajcısı, satıcısı, sahibi veya bakımcısı değiliz; ne de bu tarafların yetkili temsilcisiyiz. Bağımsız üçüncü taraf muayene anlayışıyla faaliyet gösteririz.'
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ export default function AccreditationCommitment() {
       id: 3,
       icon: Briefcase,
       title: 'Danışmanlık ve Eğitim Hizmeti Vermeme İlkesi',
-      desc: 'ISO 17020 gereğince, tarafsızlığımızı zedeleyebilecek hiçbir danışmanlık, tasarım, mühendislik danışmanlığı veya ticari eğitim hizmeti teklif etmez ve sağlamayız. Yalnızca bağımsız muayene ve raporlama yaparız.'
+      desc: 'TS EN ISO/IEC 17020 kalite ilkelerine uygun olarak tarafsızlığı zedeleyebilecek danışmanlık, tasarım veya ticari eğitim sunmayız. Yalnızca bağımsız muayene ve raporlama yaparız.'
     },
     {
       id: 4,
@@ -64,14 +64,14 @@ export default function AccreditationCommitment() {
       <div className="section-intro-center">
         <div className="section-badge">
           <span className="badge-dot"></span>
-          <span>TS EN ISO/IEC 17020 UYGUNLUK TAAHHÜDÜ</span>
+          <span>TS EN ISO/IEC 17020 KALİTE İLKELERİ</span>
         </div>
         <h3 className="section-title-large font-bold">
           Bağımsızlık, Tarafsızlık ve <br />
           <span className="text-accent-glow">Kalite Politikamız</span>
         </h3>
         <p className="section-subtitle font-regular">
-          Uluslararası TS EN ISO/IEC 17020 Muayene Kuruluşları Yönetim Sistemi kapsamında; faaliyet gösterdiğimiz tüm alanlarda müşterilerimize, yasal otoritelere ve kamuya açık resmi taahhüdümüzdür.
+          Muayene süreçlerimizi TS EN ISO/IEC 17020’nin bağımsızlık, tarafsızlık ve izlenebilirlik ilkelerine göre kurguluyoruz. Bu metin, resmi bir akreditasyon belgesi iddiası değil; uyguladığımız kalite taahhüdüdür.
         </p>
       </div>
 
@@ -83,14 +83,14 @@ export default function AccreditationCommitment() {
           </div>
           <div className="policy-hero-text">
             <h4 className="policy-hero-title font-bold">
-              Resmi Kalite Yönetim Sistemi Taahhüdümüz (TS EN ISO/IEC 17020)
+              Kalite yönetim taahhüdümüz (TS EN ISO/IEC 17020 ilkeleri)
             </h4>
             <p className="policy-hero-desc font-regular">
-              "Tüm muayene faaliyetlerimizde müşteri memnuniyetini en üst düzeyde tutmayı, uluslararası standartlara uygun, güvenilir, izlenebilir ve sürekli iyileşen bir hizmet sunmayı taahhüt ederiz. Kalite Yönetim Sistemimizi akreditasyon şartları ve ilgili yasal mevzuatlar doğrultusunda sürekli geliştirir; <strong>tarafsızlık, gizlilik, dürüstlük ve güven</strong> ilkelerine koşulsuz bağlı kalırız."
+              Tüm muayene faaliyetlerimizde uluslararası ürün ve baca standartlarına uygun, güvenilir ve izlenebilir hizmet sunmayı taahhüt ederiz. Kalite sistemimizi yasal mevzuat ve TS EN ISO/IEC 17020 ilkeleri doğrultusunda geliştirir; <strong>tarafsızlık, gizlilik, dürüstlük ve güven</strong> esaslarına bağlı kalırız.
             </p>
             <div className="policy-meta-tags">
               <span>● Doküman Kodu: BKR-KP-01</span>
-              <span>● Kapsam: Akredite Baca Muayene Faaliyetleri</span>
+              <span>● Kapsam: Baca muayene ve raporlama</span>
               <span>● Standart: TS EN ISO/IEC 17020</span>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function AccreditationCommitment() {
               <p className="commitment-desc font-regular">{item.desc}</p>
               <div className="commitment-check-row">
                 <CheckCircle2 size={14} className="check-icon-green" />
-                <span className="font-medium">ISO 17020 Zorunlu Maddesi</span>
+                <span className="font-medium">17020 kalite ilkesi</span>
               </div>
             </div>
           );

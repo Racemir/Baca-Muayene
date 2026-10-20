@@ -17,6 +17,7 @@ import PeriodicInspectionPage from './pages/services/PeriodicInspectionPage';
 import ProjectCompliancePage from './pages/services/ProjectCompliancePage';
 import CitiesPage from './pages/CitiesPage';
 import CityDetailPage from './pages/CityDetailPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   // =========================================================================
@@ -123,15 +124,9 @@ export default function App() {
           } 
         />
 
-        {/* Tanımlanmayan yollar için Ana Sayfa yönlendirmesi */}
-        <Route 
-          path="*" 
-          element={
-            <HomePage 
-              onOpenAppointment={handleOpenAppointment}
-              onSelectService={handleSelectService}
-            />
-          } 
+        <Route
+          path="*"
+          element={<NotFoundPage onOpenAppointment={handleOpenAppointment} />}
         />
       </Routes>
     </BrowserRouter>

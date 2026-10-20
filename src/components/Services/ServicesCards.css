@@ -60,6 +60,11 @@
 /* --------------------------------------------------------------------------
    TEKİL HİZMET KARTI (KAF TECHNOLOGY STİLİ)
    -------------------------------------------------------------------------- */
+a.service-card {
+  color: inherit;
+  text-decoration: none;
+}
+
 .service-card {
   position: relative;
   background: #111115;

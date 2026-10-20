@@ -13,7 +13,7 @@
    ========================================================================== */
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   Home, 
   ChevronRight, 
@@ -30,22 +30,40 @@ import {
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer/Footer';
 import SeoHead from '../../components/Common/SeoHead';
-import imgProjeMontaj from '../../assets/images/service-proje-montaj.jpg';
-import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.jpg';
-import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.jpg';
+import { getStaticSeo } from '../../seo/routes';
+import { absUrl } from '../../seo/site';
+import { breadcrumbSchema, serviceSchema } from '../../seo/schema';
+import imgProjeMontaj from '../../assets/images/service-proje-montaj.webp';
+import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.webp';
+import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.webp';
 import './ServiceDetailPage.css';
 
 export default function ProjectCompliancePage({ onOpenAppointment }) {
   const navigate = useNavigate();
+  const pageSeo = getStaticSeo('/hizmetler/proje-ve-montaj-uygunluk-muayenesi');
 
   return (
     <div className="service-page-layout">
-      {/* Proje ve Montaj Uygunluk SEO Tanımı */}
       <SeoHead
-        title="Baca Proje & Montaj Uygunluk Muayenesi | Baca Rapor"
-        description="TS EN 13384 kesit hesaplamaları, CAD modelleme, lazerli çap ölçümü ve belediye iskan yapı kullanım onaylı baca uygunluk raporu."
-        keywords="baca proje uygunluk muayenesi, baca kesit hesabı, ts en 13384, yapı kullanım baca raporu, iskan baca uygunluk"
-        canonicalUrl="https://bacaraporu.com.tr/hizmetler/proje-ve-montaj-uygunluk-muayenesi"
+        title={pageSeo.title}
+        description={pageSeo.description}
+        keywords={pageSeo.keywords}
+        canonicalUrl={absUrl(pageSeo.path)}
+        schemaData={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            breadcrumbSchema([
+              { name: 'Ana Sayfa', url: absUrl('/') },
+              { name: 'Proje ve Montaj Uygunluk Muayenesi', url: absUrl(pageSeo.path) },
+            ]),
+            serviceSchema({
+              name: 'Baca Proje ve Montaj Uygunluk Muayenesi',
+              description: pageSeo.description,
+              url: absUrl(pageSeo.path),
+              serviceType: 'Baca proje ve montaj uygunluk muayenesi',
+            }),
+          ],
+        }}
       />
 
       {/* 1. ÜST SABİT NAVİGASYON */}
@@ -57,22 +75,14 @@ export default function ProjectCompliancePage({ onOpenAppointment }) {
         <div className="service-breadcrumb-bar">
           <div className="container">
             <nav className="service-breadcrumb" aria-label="Ekmek Kırıntısı">
-              <button 
-                type="button" 
-                className="service-breadcrumb-link"
-                onClick={() => navigate('/')}
-              >
+              <Link to="/" className="service-breadcrumb-link">
                 <Home size={13} />
                 <span>Ana Sayfa</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="service-breadcrumb-separator" />
-              <button 
-                type="button" 
-                className="service-breadcrumb-link"
-                onClick={() => navigate('/#hizmetler')}
-              >
+              <Link to="/#hizmetler" className="service-breadcrumb-link">
                 <span>Hizmetler</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="service-breadcrumb-separator" />
               <span className="service-breadcrumb-current">Proje ve Montaj Uygunluk Muayenesi</span>
             </nav>
@@ -142,9 +152,13 @@ export default function ProjectCompliancePage({ onOpenAppointment }) {
               <div className="service-hero-media">
                 <img 
                   src={imgProjeMontaj} 
-                  alt="CAD ve Lazer Ölçüm ile Baca Proje ve Montaj Uygunluk Muayenesi" 
+                  alt="Baca proje ve montaj uygunluk muayenesi" 
                   className="hero-main-img"
+                  width={900}
+                  height={720}
+                  fetchPriority="high"
                   loading="eager"
+                  decoding="async"
                 />
                 <div className="hero-image-overlay"></div>
                 <div className="hero-media-badge-tag">
@@ -249,7 +263,7 @@ export default function ProjectCompliancePage({ onOpenAppointment }) {
                   </div>
                   <h3 className="legal-card-title">Yapı Kullanma İzin Belgesi (İSKAN)</h3>
                   <p className="legal-card-desc">
-                    3194 sayılı İmar Kanunu ve Belediye İmar Yönetmelikleri uyarınca, yeni yapılan binaların iskan alabilmesi için bağımsız akredite firmadan onaylı "Baca Proje ve Montaj Uygunluk Raporu" şarttır.
+                    3194 sayılı İmar Kanunu ve Belediye İmar Yönetmelikleri uyarınca, yeni yapılan binaların iskan alabilmesi için bağımsız muayene ekibinden onaylı "Baca Proje ve Montaj Uygunluk Raporu" istenir.
                   </p>
                   <span className="legal-card-law">3194 Sayılı İmar Kanunu & İskan</span>
                 </div>
@@ -444,7 +458,7 @@ export default function ProjectCompliancePage({ onOpenAppointment }) {
                   <span className="block-tag">// DİĞER HİZMETLERİMİZ</span>
                   <h3>İlgili Muayene ve Denetim Hizmetleri</h3>
                 </div>
-                <p>Tüm baca denetimlerinizi tek merkezden akredite olarak tamamlayın.</p>
+                <p>Tüm baca denetimlerinizi tek merkezden, standartlara uygun şekilde tamamlayın.</p>
               </div>
 
               <div className="other-services-grid">

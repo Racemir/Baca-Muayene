@@ -6,7 +6,7 @@
    ========================================================================== */
 
 import React, { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   Home, 
   ChevronRight, 
@@ -17,6 +17,9 @@ import {
 import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/Footer';
 import SeoHead from '../components/Common/SeoHead';
+import { getStaticSeo } from '../seo/routes';
+import { absUrl } from '../seo/site';
+import { breadcrumbSchema } from '../seo/schema';
 import { REGIONS_LIST, searchCities } from '../data/citiesData';
 import './CitiesPage.css';
 
@@ -51,10 +54,19 @@ export default function CitiesPage({ onOpenAppointment }) {
     <div className="cities-page-layout">
       {/* 81 İl SEO Başlık ve Meta Tanımları */}
       <SeoHead
-        title="81 İl Baca Raporu | Yetkili Baca Sızdırmazlık Testi ve Muayene Hizmetleri"
-        description="Türkiye'nin 81 ilinde gaz dağıtım kuruluşları (İGDAŞ, Başkentgaz, İzmirgaz vb.) onaylı yetkili baca raporu, baca sızdırmazlık testi ve kontrol hizmetleri."
-        keywords="81 il baca raporu, türkiye baca raporu, yetkili baca raporu, baca sızdırmazlık testi, gaz açım baca raporu, doğalgaz baca uygunluk belgesi"
-        canonicalUrl="https://bacaraporu.com.tr/iller"
+        title={getStaticSeo('/iller').title}
+        description={getStaticSeo('/iller').description}
+        keywords={getStaticSeo('/iller').keywords}
+        canonicalUrl={absUrl('/iller')}
+        schemaData={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            breadcrumbSchema([
+              { name: 'Ana Sayfa', url: absUrl('/') },
+              { name: 'Hizmet Bölgelerimiz', url: absUrl('/iller') },
+            ]),
+          ],
+        }}
       />
 
       {/* 1. ÜST NAVİGASYON */}
@@ -66,14 +78,10 @@ export default function CitiesPage({ onOpenAppointment }) {
         <div className="cities-breadcrumb-bar">
           <div className="container">
             <nav className="cities-breadcrumb" aria-label="Ekmek Kırıntısı">
-              <button 
-                type="button" 
-                className="cities-breadcrumb-link"
-                onClick={() => navigate('/')}
-              >
+              <Link to="/" className="cities-breadcrumb-link">
                 <Home size={13} />
                 <span>Ana Sayfa</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="cities-breadcrumb-separator" />
               <span className="cities-breadcrumb-current font-medium">Hizmet Bölgelerimiz (81 İl)</span>
             </nav>
@@ -87,12 +95,12 @@ export default function CitiesPage({ onOpenAppointment }) {
             <div className="cities-hero-header">
               <div className="cities-hero-badge">
                 <MapPin size={14} />
-                <span>81 İLDE RESMİ VE AKREDİTE SAHA DENETİMİ</span>
+                <span>81 İLDE RESMİ SAHA DENETİMİ</span>
               </div>
               
               <h1 className="cities-hero-title font-bold">
-                Türkiye'nin 81 İline <br />
-                <span className="text-secondary font-regular">Kesintisiz Baca Muayene Hizmeti</span>
+                81 İl Baca Raporu ve <br />
+                <span className="text-secondary font-regular">Sızdırmazlık Testi Hizmeti</span>
               </h1>
 
               <p className="cities-hero-lead font-regular">
@@ -262,18 +270,10 @@ export default function CitiesPage({ onOpenAppointment }) {
             {filteredCities.length > 0 ? (
               <div className="cities-grid">
                 {filteredCities.map((city) => (
-                  <div
+                  <Link
                     key={city.slug}
+                    to={`/iller/${city.slug}`}
                     className="city-card-item"
-                    onClick={() => navigate(`/iller/${city.slug}`)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        navigate(`/iller/${city.slug}`);
-                      }
-                    }}
                   >
                     <div className="city-card-left">
                       <div className="city-plate-badge">
@@ -288,7 +288,7 @@ export default function CitiesPage({ onOpenAppointment }) {
                     <div className="city-arrow-icon">
                       <ArrowUpRight size={16} />
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             ) : (
@@ -315,7 +315,7 @@ export default function CitiesPage({ onOpenAppointment }) {
               <div className="cities-cta-content">
                 <h3>Bulunduğunuz Şehir İçin Aynı Gün Denetim Planlayın</h3>
                 <p>
-                  81 ilin tamamında akredite mühendis kadromuz ve kalibreli dijital cihazlarımızla resmi gaz açma ve onaylı baca uygunluk raporlarınızı hazırlıyoruz.
+                  81 ilde kalibre dijital cihazlarımızla resmi gaz açımına uygun baca raporu ve sızdırmazlık testi hazırlıyoruz.
                 </p>
               </div>
               <button 

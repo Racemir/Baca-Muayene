@@ -1,5 +1,18 @@
-User-agent: *
+# Baca Raporu — tarama yönergeleri
+User-agent: Googlebot
+Allow: /
+Disallow: /404.html
+
+User-agent: Googlebot-Image
 Allow: /
 
-# XML Sitemap
+User-agent: Bingbot
+Allow: /
+Disallow: /404.html
+
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+Host: https://bacaraporu.com.tr
 Sitemap: https://bacaraporu.com.tr/sitemap.xml

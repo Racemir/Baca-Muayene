@@ -75,9 +75,12 @@ export default function AboutStory() {
           <div className="story-image-card">
             <img 
               src={rooftopSkylineImg} 
-              alt="Çift Cidarlı Çelik Baca Çatı Montajı ve Şehir Görünümü" 
+              alt="Çift cidarlı çelik baca çatı montajı" 
               className="story-main-img"
+              width={1200}
+              height={800}
               loading="lazy"
+              decoding="async"
             />
             <div className="story-image-gradient"></div>
 
@@ -93,7 +96,7 @@ export default function AboutStory() {
             <div className="image-badge badge-bottom-left">
               <MapPin size={18} className="badge-icon-highlight" />
               <div>
-                <span className="badge-title font-semibold">81 İlde Akredite</span>
+                <span className="badge-title font-semibold">81 İlde Saha Hizmeti</span>
                 <span className="badge-subtitle">Kesintisiz Saha Erişimi</span>
               </div>
             </div>
@@ -112,9 +115,12 @@ export default function AboutStory() {
             <div className="sub-visual-thumb">
               <img 
                 src={facadeChimneyImg} 
-                alt="Endüstriyel Bina Dış Cephe Baca Hattı" 
-                className="sub-thumb-img" 
+                alt="Endüstriyel bina dış cephe baca hattı" 
+                className="sub-thumb-img"
+                width={640}
+                height={420}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="sub-visual-info">

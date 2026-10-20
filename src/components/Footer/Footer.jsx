@@ -5,55 +5,11 @@
    ========================================================================== */
 
 import React from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ShieldCheck, Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import './Footer.css';
 
 export default function Footer({ onOpenAppointment }) {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleNavClick = (target) => {
-    if (target === 'home') {
-      if (location.pathname === '/') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        navigate('/');
-      }
-    } else if (target === 'corporate') {
-      navigate('/kurumsal');
-    } else if (target === 'corporate-about') {
-      navigate('/kurumsal#hakkimizda');
-    } else if (target === 'corporate-mission') {
-      navigate('/kurumsal#misyon-vizyon');
-    } else if (target === 'corporate-quality') {
-      navigate('/kurumsal#kalite-kontrol');
-    } else if (target === 'service-sizdirmazlik') {
-      navigate('/hizmetler/baca-sizdirmazlik-testi');
-    } else if (target === 'service-periyodik') {
-      navigate('/hizmetler/periyodik-baca-kontrolleri');
-    } else if (target === 'service-proje') {
-      navigate('/hizmetler/proje-ve-montaj-uygunluk-muayenesi');
-    } else if (target === 'iller') {
-      navigate('/iller');
-    } else if (target === 'corporate-accreditation') {
-      navigate('/kurumsal#akreditasyon');
-    } else if (target === 'corporate-prep') {
-      navigate('/kurumsal#saha-hazirlik');
-    } else if (target === 'corporate-appeals') {
-      navigate('/kurumsal#itiraz-sikayet');
-    } else {
-      if (location.pathname === '/') {
-        const el = document.getElementById(target);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        navigate(`/#${target}`);
-      }
-    }
-  };
-
   return (
     <footer id="iletisim" className="site-footer">
       <div className="container">
@@ -65,7 +21,7 @@ export default function Footer({ onOpenAppointment }) {
               Tesisinizin Baca Muayenesini Güvenle Gerçekleştirin
             </h3>
             <p className="footer-cta-desc font-regular">
-              Yasal zorunlulukları yerine getirin, akredite standartlara uygun resmi denetim ve muayene raporunuzu gecikmeden alın.
+              Yasal zorunlulukları yerine getirin, standartlara uygun resmi denetim ve muayene raporunuzu gecikmeden alın.
             </p>
           </div>
           <button
@@ -84,24 +40,20 @@ export default function Footer({ onOpenAppointment }) {
           {/* Logo ve Kısa Şirket Tanıtımı */}
           <div className="footer-brand-col">
             <div className="footer-brand-header">
-              <button
-                type="button"
-                className="footer-brand-btn"
-                onClick={() => handleNavClick('home')}
-              >
+              <Link to="/" className="footer-brand-btn">
                 <div className="brand-icon-box">
                   <ShieldCheck size={20} className="brand-svg-icon" />
                 </div>
                 <span className="brand-text">
                   BACA <span className="brand-text-accent">RAPOR</span>
                 </span>
-              </button>
+              </Link>
             </div>
             <p className="footer-brand-desc font-regular">
-              Türkiye genelinde 81 ilde endüstriyel ve konut projeleri için akredite baca kontrolü, sızdırmazlık testleri ve periyodik muayene raporlama hizmetleri.
+              Türkiye genelinde 81 ilde endüstriyel ve konut projeleri için baca kontrolü, sızdırmazlık testleri ve periyodik muayene raporlama hizmetleri.
             </p>
             <div className="footer-cert-pill font-medium">
-              <span>● Akredite ve Sertifikalı Muayene</span>
+              <span>● Standartlara uygun bağımsız muayene</span>
             </div>
           </div>
 
@@ -110,29 +62,19 @@ export default function Footer({ onOpenAppointment }) {
             <h4 className="footer-col-title font-semibold">Sayfalar</h4>
             <ul className="footer-links-list">
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('home')}>
-                  Ana Sayfa
-                </button>
+                <Link to="/" className="footer-link-btn">Ana Sayfa</Link>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('corporate')}>
-                  Kurumsal Portal
-                </button>
+                <Link to="/kurumsal" className="footer-link-btn">Kurumsal Portal</Link>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('hizmetler')}>
-                  Hizmetlerimiz
-                </button>
+                <Link to="/#hizmetler" className="footer-link-btn">Hizmetlerimiz</Link>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('iller')}>
-                  İller (Hizmet Bölgeleri)
-                </button>
+                <Link to="/iller" className="footer-link-btn">İller (Hizmet Bölgeleri)</Link>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('iletisim')}>
-                  İletişim & Destek
-                </button>
+                <a href="/#iletisim" className="footer-link-btn">İletişim & Destek</a>
               </li>
             </ul>
           </div>
@@ -142,24 +84,24 @@ export default function Footer({ onOpenAppointment }) {
             <h4 className="footer-col-title font-semibold">Hizmetlerimiz</h4>
             <ul className="footer-links-list">
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('service-sizdirmazlik')}>
+                <Link to="/hizmetler/baca-sizdirmazlik-testi" className="footer-link-btn">
                   Baca Sızdırmazlık Testi
-                </button>
+                </Link>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('service-periyodik')}>
+                <Link to="/hizmetler/periyodik-baca-kontrolleri" className="footer-link-btn">
                   Periyodik Baca Kontrolleri
-                </button>
+                </Link>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('service-proje')}>
+                <Link to="/hizmetler/proje-ve-montaj-uygunluk-muayenesi" className="footer-link-btn">
                   Proje & Montaj Uygunluk
-                </button>
+                </Link>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => handleNavClick('corporate-quality')}>
+                <Link to="/kurumsal#kalite-kontrol" className="footer-link-btn">
                   6 Aşamalı Kalite Kontrol
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -251,17 +193,17 @@ export default function Footer({ onOpenAppointment }) {
             © 2026 <strong>Baca Rapor</strong>. Tüm hakları saklıdır.
           </p>
           <div className="footer-legal-links">
-            <button type="button" className="footer-legal-link-btn font-light" onClick={() => handleNavClick('corporate-accreditation')}>
-              ISO 17020 Akreditasyon & Tarafsızlık
-            </button>
+            <Link to="/kurumsal#akreditasyon" className="footer-legal-link-btn font-light">
+              ISO 17020 Kalite ve Tarafsızlık
+            </Link>
             <span className="legal-dot">•</span>
-            <button type="button" className="footer-legal-link-btn font-light" onClick={() => handleNavClick('corporate-appeals')}>
+            <Link to="/kurumsal#itiraz-sikayet" className="footer-legal-link-btn font-light">
               İtiraz ve Şikayet Prosedürü (BKR-P-09)
-            </button>
+            </Link>
             <span className="legal-dot">•</span>
-            <button type="button" className="footer-legal-link-btn font-light" onClick={() => handleNavClick('corporate-prep')}>
+            <Link to="/kurumsal#saha-hazirlik" className="footer-legal-link-btn font-light">
               Müşteri Saha Hazırlık Kılavuzu (BKR-T-03)
-            </button>
+            </Link>
           </div>
         </div>
 

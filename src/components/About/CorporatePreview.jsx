@@ -7,7 +7,7 @@
    ========================================================================== */
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   ShieldCheck, 
@@ -19,7 +19,6 @@ import { facadeChimneyImg } from '../../assets/gorseller';
 import './AboutSection.css';
 
 export default function CorporatePreview() {
-  const navigate = useNavigate();
 
   return (
     <section id="kurumsal-ozet" className="corporate-preview-section">
@@ -29,13 +28,16 @@ export default function CorporatePreview() {
         <div className="preview-split-grid">
           
           {/* SOL KOLON: FOTOĞRAF (YARI YARIYA KÜÇÜLTÜLMÜŞ, DIŞ CEPHE BACASI) */}
-          <div className="preview-split-visual" onClick={() => navigate('/kurumsal')}>
+          <Link to="/kurumsal" className="preview-split-visual">
             <div className="preview-split-frame">
               <img 
                 src={facadeChimneyImg} 
-                alt="Baca Kontrolü Dış Cephe Paslanmaz Çelik Baca Montajı" 
+                alt="Dış cephe paslanmaz çelik baca montajı" 
                 className="preview-split-img"
+                width={900}
+                height={1100}
                 loading="lazy"
+                decoding="async"
               />
               <div className="preview-image-gradient-overlay"></div>
 
@@ -62,7 +64,7 @@ export default function CorporatePreview() {
                 <ArrowRight size={15} />
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* SAĞ KOLON: KURUMSAL BAŞLIK, METİN VE AKSİYON BUTONU */}
           <div className="preview-split-content">
@@ -78,15 +80,14 @@ export default function CorporatePreview() {
               </p>
 
               <div className="preview-cta-wrap">
-                <button 
-                  type="button" 
+                <Link
+                  to="/kurumsal"
                   className="btn-primary font-medium"
-                  onClick={() => navigate('/kurumsal')}
                   title="Detaylı Kurumsal Sayfamıza Geçin"
                 >
                   <span>Kurumsal Sayfamıza Geçin</span>
                   <ArrowRight size={18} />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -97,10 +98,7 @@ export default function CorporatePreview() {
         <div className="preview-subpages-grid">
           
           {/* Kart 1: Hakkımızda */}
-          <div 
-            className="preview-subpage-card"
-            onClick={() => navigate('/kurumsal#hakkimizda')}
-          >
+          <Link to="/kurumsal#hakkimizda" className="preview-subpage-card">
             <div className="subpage-card-icon">
               <Building2 size={24} />
             </div>
@@ -114,13 +112,10 @@ export default function CorporatePreview() {
             <div className="subpage-arrow">
               <ArrowRight size={16} />
             </div>
-          </div>
+          </Link>
 
           {/* Kart 2: Misyon ve Vizyon */}
-          <div 
-            className="preview-subpage-card"
-            onClick={() => navigate('/kurumsal#misyon-vizyon')}
-          >
+          <Link to="/kurumsal#misyon-vizyon" className="preview-subpage-card">
             <div className="subpage-card-icon">
               <Target size={24} />
             </div>
@@ -134,13 +129,10 @@ export default function CorporatePreview() {
             <div className="subpage-arrow">
               <ArrowRight size={16} />
             </div>
-          </div>
+          </Link>
 
           {/* Kart 3: 6 Aşamalı Kalite Kontrol */}
-          <div 
-            className="preview-subpage-card"
-            onClick={() => navigate('/kurumsal#kalite-kontrol')}
-          >
+          <Link to="/kurumsal#kalite-kontrol" className="preview-subpage-card">
             <div className="subpage-card-icon">
               <Award size={24} />
             </div>
@@ -154,7 +146,7 @@ export default function CorporatePreview() {
             <div className="subpage-arrow">
               <ArrowRight size={16} />
             </div>
-          </div>
+          </Link>
 
         </div>
 

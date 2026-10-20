@@ -1,10 +1,9 @@
-// Gerçek saha görselleri export dosyası
-import technicianInspectionImg from './WhatsApp Image 2026-10-08 at 17.58.03.jpeg';
-import rooftopChimneyImg from './resim.jpeg';
-import rooftopSkylineImg from './WhatsApp Image 2026-10-08 at 17.58.04 (3).jpeg';
-import cascadeBoilerImg from './WhatsApp Image 2026-10-08 at 17.58.04 (4).jpeg';
-import facadeChimneyImg from './WhatsApp Image 2026-10-08 at 17.58.02.jpeg';
-import boilerRoomImg from './WhatsApp Image 2026-10-08 at 17.58.03.jpeg';
+import technicianInspectionImg from './boiler-room.webp';
+import rooftopChimneyImg from './rooftop-chimney.webp';
+import rooftopSkylineImg from './rooftop-skyline.webp';
+import cascadeBoilerImg from './cascade-boiler.webp';
+import facadeChimneyImg from './facade-chimney.webp';
+import boilerRoomImg from './boiler-room.webp';
 
 export {
   technicianInspectionImg,

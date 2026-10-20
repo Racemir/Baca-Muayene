@@ -16,74 +16,22 @@ import ServicesCards from '../components/Services/ServicesCards';
 import CorporatePreview from '../components/About/CorporatePreview';
 import Footer from '../components/Footer/Footer';
 import SeoHead from '../components/Common/SeoHead';
+import HomeFaq from '../components/Common/HomeFaq';
+import { getStaticSeo } from '../seo/routes';
+import { homeGraphSchema } from '../seo/schema';
+import { absUrl } from '../seo/site';
 
 export default function HomePage({ onOpenAppointment, onSelectService }) {
-  const homeSchema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://bacaraporu.com.tr/#organization",
-        "name": "Baca Raporu",
-        "alternateName": "İstanbul İGDAŞ Baca Raporu",
-        "url": "https://bacaraporu.com.tr",
-        "logo": "https://bacaraporu.com.tr/favicon.svg",
-        "telephone": "+905367068125",
-        "email": "istanbulbacaraporu@gmail.com",
-        "sameAs": [
-          "https://share.google/FlGwC154l0NluMoQO"
-        ]
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://bacaraporu.com.tr/#localbusiness",
-        "name": "İstanbul İGDAŞ Baca Raporu",
-        "url": "https://bacaraporu.com.tr",
-        "image": "https://bacaraporu.com.tr/favicon.svg",
-        "telephone": "+905367068125",
-        "email": "istanbulbacaraporu@gmail.com",
-        "priceRange": "$$",
-        "hasMap": "https://share.google/FlGwC154l0NluMoQO",
-        "sameAs": [
-          "https://share.google/FlGwC154l0NluMoQO"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "İstanbul",
-          "addressCountry": "TR"
-        },
-        "areaServed": [
-          {
-            "@type": "AdministrativeArea",
-            "name": "İstanbul"
-          },
-          {
-            "@type": "Country",
-            "name": "Türkiye"
-          }
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://bacaraporu.com.tr/#website",
-        "url": "https://bacaraporu.com.tr",
-        "name": "Baca Raporu",
-        "publisher": {
-          "@id": "https://bacaraporu.com.tr/#organization"
-        }
-      }
-    ]
-  };
+  const homeSeo = getStaticSeo('/');
 
   return (
     <div className="home-page-layout">
-      {/* Ana Sayfa SEO Meta Bilgileri */}
       <SeoHead
-        title="Baca Raporu | Yetkili Baca Sızdırmazlık Testi ve Uygunluk Raporu"
-        description="Yetkili baca raporu, baca sızdırmazlık testi ve doğalgaz baca uygunluk muayenesi. 81 ilde gaz dağıtım onaylı, akredite ve hızlı baca raporu hizmeti."
-        keywords="baca raporu, baca sızdırmazlık testi, doğalgaz baca raporu, baca uygunluk belgesi, baca muayenesi, akredite baca kontrolü"
-        canonicalUrl="https://bacaraporu.com.tr/"
-        schemaData={homeSchema}
+        title={homeSeo.title}
+        description={homeSeo.description}
+        keywords={homeSeo.keywords}
+        canonicalUrl={absUrl('/')}
+        schemaData={homeGraphSchema()}
       />
       
       {/* 1. ÜST SABİT NAVİGASYON */}
@@ -97,8 +45,8 @@ export default function HomePage({ onOpenAppointment, onSelectService }) {
         {/* 3'lü Hizmet Kartları */}
         <ServicesCards onSelectService={onSelectService} />
 
-        {/* Kurumsal Özet ve /kurumsal Sayfasına Geçiş Vitrini */}
         <CorporatePreview />
+        <HomeFaq />
       </main>
 
       {/* 3. ALT BİLGİ VE İLETİŞİM */}

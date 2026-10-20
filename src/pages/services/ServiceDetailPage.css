@@ -35,6 +35,11 @@
   flex-wrap: wrap;
 }
 
+a.service-breadcrumb-link {
+  text-decoration: none;
+  font-family: inherit;
+}
+
 .service-breadcrumb-link {
   display: inline-flex;
   align-items: center;

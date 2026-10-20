@@ -30,7 +30,7 @@ export default function CustomerPrepGuide() {
           <span className="text-accent-glow">Saha Hazırlık Kılavuzu</span>
         </h3>
         <p className="section-subtitle font-regular">
-          Denetimlerin eksiksiz, güvenli ve ilk seferde başarıyla tamamlanabilmesi için TS EN ISO/IEC 17020 standartları gereğince sahada hazır bulundurulması gereken teknik şartlar ve müşteri yükümlülükleri.
+          Denetimlerin eksiksiz, güvenli ve ilk seferde tamamlanabilmesi için saha talimatımız (BKR-T-03) gereğince hazır bulundurulması gereken teknik şartlar ve müşteri yükümlülükleri.
         </p>
       </div>
 

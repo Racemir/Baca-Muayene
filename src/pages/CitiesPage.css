@@ -32,6 +32,15 @@
   flex-wrap: wrap;
 }
 
+a.cities-breadcrumb-link {
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.city-card-item {
+  color: inherit;
+}
+
 .cities-breadcrumb-link {
   display: inline-flex;
   align-items: center;

@@ -13,7 +13,7 @@
    ========================================================================== */
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   Home, 
   ChevronRight, 
@@ -30,22 +30,40 @@ import {
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer/Footer';
 import SeoHead from '../../components/Common/SeoHead';
-import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.jpg';
-import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.jpg';
-import imgProjeMontaj from '../../assets/images/service-proje-montaj.jpg';
+import { getStaticSeo } from '../../seo/routes';
+import { absUrl } from '../../seo/site';
+import { breadcrumbSchema, serviceSchema } from '../../seo/schema';
+import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.webp';
+import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.webp';
+import imgProjeMontaj from '../../assets/images/service-proje-montaj.webp';
 import './ServiceDetailPage.css';
 
 export default function PeriodicInspectionPage({ onOpenAppointment }) {
   const navigate = useNavigate();
+  const pageSeo = getStaticSeo('/hizmetler/periyodik-baca-kontrolleri');
 
   return (
     <div className="service-page-layout">
-      {/* Periyodik Muayene SEO Tanımı */}
       <SeoHead
-        title="Periyodik Baca Kontrolü & Robotik Kamera Muayenesi | Baca Rapor"
-        description="Binaların Yangından Korunması Yönetmeliği gereğince yılda 1 zorunlu periyodik baca kontrolü. 360° robotik kameralı kurum ve çekiş denetimi."
-        keywords="periyodik baca kontrolü, baca kamera kontrolü, periyodik baca muayene raporu, merkezi kazan dairesi baca muayenesi"
-        canonicalUrl="https://bacaraporu.com.tr/hizmetler/periyodik-baca-kontrolleri"
+        title={pageSeo.title}
+        description={pageSeo.description}
+        keywords={pageSeo.keywords}
+        canonicalUrl={absUrl(pageSeo.path)}
+        schemaData={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            breadcrumbSchema([
+              { name: 'Ana Sayfa', url: absUrl('/') },
+              { name: 'Periyodik Baca Kontrolleri', url: absUrl(pageSeo.path) },
+            ]),
+            serviceSchema({
+              name: 'Periyodik Baca Kontrolü',
+              description: pageSeo.description,
+              url: absUrl(pageSeo.path),
+              serviceType: 'Periyodik baca kontrolü ve robotik kamera muayenesi',
+            }),
+          ],
+        }}
       />
 
       {/* 1. ÜST SABİT NAVİGASYON */}
@@ -57,22 +75,14 @@ export default function PeriodicInspectionPage({ onOpenAppointment }) {
         <div className="service-breadcrumb-bar">
           <div className="container">
             <nav className="service-breadcrumb" aria-label="Ekmek Kırıntısı">
-              <button 
-                type="button" 
-                className="service-breadcrumb-link"
-                onClick={() => navigate('/')}
-              >
+              <Link to="/" className="service-breadcrumb-link">
                 <Home size={13} />
                 <span>Ana Sayfa</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="service-breadcrumb-separator" />
-              <button 
-                type="button" 
-                className="service-breadcrumb-link"
-                onClick={() => navigate('/#hizmetler')}
-              >
+              <Link to="/#hizmetler" className="service-breadcrumb-link">
                 <span>Hizmetler</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="service-breadcrumb-separator" />
               <span className="service-breadcrumb-current">Periyodik Baca Kontrolleri</span>
             </nav>
@@ -142,9 +152,13 @@ export default function PeriodicInspectionPage({ onOpenAppointment }) {
               <div className="service-hero-media">
                 <img 
                   src={imgPeriyodik} 
-                  alt="Periyodik Baca Kontrolü ve Muayenesi" 
+                  alt="Periyodik baca kontrolü ve robotik kamera muayenesi" 
                   className="hero-main-img"
+                  width={900}
+                  height={720}
+                  fetchPriority="high"
                   loading="eager"
+                  decoding="async"
                 />
                 <div className="hero-image-overlay"></div>
                 <div className="hero-media-badge-tag">
@@ -438,7 +452,7 @@ export default function PeriodicInspectionPage({ onOpenAppointment }) {
                   <span className="block-tag">// DİĞER HİZMETLERİMİZ</span>
                   <h3>İlgili Muayene ve Denetim Hizmetleri</h3>
                 </div>
-                <p>Tüm baca denetimlerinizi tek merkezden akredite olarak tamamlayın.</p>
+                <p>Tüm baca denetimlerinizi tek merkezden, standartlara uygun şekilde tamamlayın.</p>
               </div>
 
               <div className="other-services-grid">

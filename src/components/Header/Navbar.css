@@ -107,6 +107,17 @@
   /* -webkit-backdrop-filter: blur(12px); */
 }
 
+a.nav-link,
+a.navbar-brand-btn,
+a.dropdown-item-row,
+a.dropdown-all-link,
+a.mobile-nav-link,
+a.mobile-sub-item {
+  text-decoration: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
 .nav-link {
   color: #a0a0a8;
   font-size: 14px;

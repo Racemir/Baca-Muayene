@@ -20,7 +20,7 @@
    ========================================================================== */
 
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   Home,
   ChevronRight,
@@ -41,75 +41,18 @@ import {
 import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/Footer';
 import SeoHead from '../components/Common/SeoHead';
+import NotFoundPage from './NotFoundPage';
 import { getCityBySlug, CITIES_DATA } from '../data/citiesData';
+import { getCityCopy } from '../data/cityContent';
+import { getCitySeo } from '../seo/routes';
+import { cityServiceSchema } from '../seo/schema';
+import { absUrl } from '../seo/site';
 import './CityDetailPage.css';
 
 export default function CityDetailPage({ onOpenAppointment }) {
   const { citySlug } = useParams();
-  const navigate = useNavigate();
 
-  // URL slug'ına göre il verisi çekme (Varsayılan: Ankara)
-  const city = getCityBySlug(citySlug) || getCityBySlug('ankara');
-
-  // Dinamik SEO ve Yapılandırılmış Veri (Schema.org JSON-LD)
-  const pageTitle = `${city.name} Baca Raporu | Yetkili Baca Sızdırmazlık Testi ve Uygunluk`;
-  const pageDescription = `${city.name} yetkili baca raporu, baca sızdırmazlık testi ve doğalgaz baca uygunluk muayenesi. ${city.gasCompany} onaylı akredite ve hızlı baca kontrol raporu alın.`;
-  const pageKeywords = `${city.name} baca raporu, ${city.name} baca sızdırmazlık testi, ${city.name} doğalgaz baca raporu, ${city.gasCompany} baca raporu, ${city.name} baca uygunluk belgesi, ${city.name} periyodik baca kontrolü`;
-  const canonicalUrl = `https://bacaraporu.com.tr/iller/${city.slug}`;
-
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Ana Sayfa",
-            "item": "https://bacaraporu.com.tr/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Hizmet Bölgelerimiz",
-            "item": "https://bacaraporu.com.tr/iller"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": `${city.name} Baca Kontrol ve Muayene`,
-            "item": canonicalUrl
-          }
-        ]
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": `${canonicalUrl}#localbusiness`,
-        "name": `Baca Raporu - ${city.name} Baca Muayene ve Kontrol`,
-        "description": pageDescription,
-        "url": canonicalUrl,
-        "telephone": "+905367068125",
-        "email": "istanbulbacaraporu@gmail.com",
-        "hasMap": "https://share.google/FlGwC154l0NluMoQO",
-        "sameAs": [
-          "https://share.google/FlGwC154l0NluMoQO"
-        ],
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": city.name
-        },
-        "priceRange": "$$",
-        "address": {
-          "@type": "PostalAddress",
-          "addressRegion": city.name,
-          "addressCountry": "TR"
-        }
-      }
-    ]
-  };
-
-  // Hızlı form yerel state'i
+  const city = getCityBySlug(citySlug);
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -119,6 +62,18 @@ export default function CityDetailPage({ onOpenAppointment }) {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  if (!city) {
+    return <NotFoundPage onOpenAppointment={onOpenAppointment} />;
+  }
+
+  const cityCopy = getCityCopy(city);
+  const citySeo = getCitySeo(city);
+  const pageTitle = citySeo.title;
+  const pageDescription = citySeo.description;
+  const pageKeywords = citySeo.keywords;
+  const canonicalUrl = absUrl(citySeo.path);
+  const schemaData = cityServiceSchema(city, canonicalUrl, pageDescription);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -180,22 +135,14 @@ export default function CityDetailPage({ onOpenAppointment }) {
         <div className="city-breadcrumb-bar">
           <div className="container">
             <nav className="city-breadcrumb" aria-label="Ekmek Kırıntısı">
-              <button
-                type="button"
-                className="city-breadcrumb-link"
-                onClick={() => navigate('/')}
-              >
+              <Link to="/" className="city-breadcrumb-link">
                 <Home size={13} />
                 <span>Ana Sayfa</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="city-breadcrumb-separator" />
-              <button
-                type="button"
-                className="city-breadcrumb-link"
-                onClick={() => navigate('/iller')}
-              >
+              <Link to="/iller" className="city-breadcrumb-link">
                 <span>İller</span>
-              </button>
+              </Link>
               <ChevronRight size={13} className="city-breadcrumb-separator" />
               <span className="city-breadcrumb-current">{city.name}</span>
             </nav>
@@ -218,8 +165,8 @@ export default function CityDetailPage({ onOpenAppointment }) {
 
             {/* BAŞLIK */}
             <h1 className="city-hero-title font-bold">
-              {city.name} Baca Muayene ve <br />
-              <span className="text-secondary font-regular">Sızdırmazlık Raporu</span>
+              {city.name} Baca Raporu ve <br />
+              <span className="text-secondary font-regular">Sızdırmazlık Testi</span>
             </h1>
 
             {/* 4. HAZIR TASLAK METNİ BÖLÜMÜ (BÖLGESEL BRİFİNG, YASAL UYGUNLUK & İLETİŞİM) */}
@@ -228,7 +175,10 @@ export default function CityDetailPage({ onOpenAppointment }) {
               {/* Giriş & Yaşam/Çalışma Alanı Güvencesi */}
               <div className="draft-section-lead">
                 <p className="draft-lead-paragraph font-medium">
-                  Yaşam ve çalışma alanlarınızda güvenliğin sağlanması, hem can ve mal koruması hem de yasal mevzuatlara uyum açısından hayati bir önem taşır. Özellikle doğalgaz kullanımı ve olası acil durum senaryolarında, sistemlerin kusursuz çalışması gerekir. Uzman kadromuzla, <strong>{city.name}</strong> genelinde yasal düzenlemelere tam uyumlu akredite kontrol ve belgelendirme hizmetleri sunuyoruz.
+                  {cityCopy.intro}
+                </p>
+                <p className="draft-lead-paragraph font-regular" style={{ marginTop: '14px' }}>
+                  {cityCopy.typical}
                 </p>
               </div>
 
@@ -269,7 +219,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     </div>
                     <div className="point-text-wrapper">
                       <strong>Binaların Yangından Korunması Hakkında Yönetmelik (Madde 58):</strong>
-                      <span>Kazan daireleri, kaskad ve merkezi baca sistemlerinin yılda en az bir defa yetkili ve akredite kuruluşlarca periyodik denetlenmesi yasal zorunluluktur.</span>
+                      <span>Kazan daireleri, kaskad ve merkezi baca sistemlerinin yılda en az bir defa yetkili ekiplerce periyodik denetlenmesi yangın yönetmeliği gereğidir.</span>
                     </div>
                   </div>
 
@@ -279,7 +229,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     </div>
                     <div className="point-text-wrapper">
                       <strong>{city.gasCompany} Şartnameleri ve Gaz Açım Onayı:</strong>
-                      <span>Abonelik gaz açım protokolleri, ticari işletme ruhsatı ve iskan süreçlerinde geçerli akredite resmi baca kontrol raporu zorunludur.</span>
+                      <span>Abonelik gaz açım protokolleri, ticari işletme ruhsatı ve iskan süreçlerinde geçerli resmi baca kontrol raporu istenir.</span>
                     </div>
                   </div>
 
@@ -289,7 +239,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     </div>
                     <div className="point-text-wrapper">
                       <strong>6331 Sayılı İSG Kanunu ve Yangın Sigortası Geçerliliği:</strong>
-                      <span>Akredite periyodik muayene raporu bulunmayan işletmelerde olası yangın ve hasar durumlarında sigorta tazminatı geçersiz sayılabilmektedir.</span>
+                      <span>Yürürlükteki periyodik muayene raporu bulunmayan işletmelerde olası yangın ve hasar durumlarında sigorta tazminatı tartışmalı hale gelebilir.</span>
                     </div>
                   </div>
 
@@ -321,7 +271,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     <span className="std-badge">TS EN 13384-1 / TS EN 13384-2 (Çap & Akışkan)</span>
                     <span className="std-badge">TS EN 15287-1 / TS EN 15287-2 (Montaj Tasarımı)</span>
                     <span className="std-badge">TS 7363 (Doğalgaz Bina İçi Tesisat)</span>
-                    <span className="std-badge">TS EN ISO/IEC 17020 Akreditasyon</span>
+                    <span className="std-badge">TS EN ISO/IEC 17020 kalite ilkeleri</span>
                   </div>
                 </div>
               </div>
@@ -329,7 +279,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
               {/* Periyodik Muayene & Bölgesel Çözüm */}
               <div className="draft-periodic-assurance">
                 <p className="font-regular">
-                  Mevcut bacaların belirli periyotlarla düzenli olarak kontrol edilmesi, olası arızaların büyümeden önlenmesini sağlar. <strong>{city.name}</strong> genelinde periyodik baca muayenesi ve sızdırmazlık testleri için güvenilir bir çözüm ortağı arıyorsanız, profesyonel ekibimizle yanınızdayız.
+                  {cityCopy.process}
                 </p>
               </div>
 
@@ -341,7 +291,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     <span>Güvenliğiniz Bizim Önceliğimizdir</span>
                   </div>
                   <p className="cta-card-message font-medium">
-                    Baca uygunluk muayenesi, baca sızdırmazlık raporu, akredite baca kontrolü ve yangın tesisatı denetimleri hakkında daha detaylı bilgi almak, randevu oluşturmak veya yasal süreçlerinizde profesyonel destek sağlamak için iletişim kanallarımızdan bize ulaşabilirsiniz.
+                    Baca uygunluk muayenesi, sızdırmazlık raporu ve periyodik kontrol için {city.name} randevusu alın. Adres ve cihaz tipini iletmeniz yeterlidir.
                   </p>
                 </div>
                 <div className="cta-card-actions">
@@ -409,11 +359,9 @@ export default function CityDetailPage({ onOpenAppointment }) {
             <div className="city-services-grid">
 
               {/* 1. SIZDIRMAZLIK TESTİ */}
-              <div
+              <Link
+                to="/hizmetler/baca-sizdirmazlik-testi"
                 className="city-service-card"
-                onClick={() => navigate('/hizmetler/baca-sizdirmazlik-testi')}
-                role="button"
-                tabIndex={0}
               >
                 <div className="city-service-top">
                   <div className="city-service-icon-box">
@@ -432,14 +380,12 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     <ArrowUpRight size={15} />
                   </div>
                 </div>
-              </div>
+              </Link>
 
               {/* 2. PROJE VE MONTAJ UYGUNLUK */}
-              <div
+              <Link
+                to="/hizmetler/proje-ve-montaj-uygunluk-muayenesi"
                 className="city-service-card"
-                onClick={() => navigate('/hizmetler/proje-ve-montaj-uygunluk-muayenesi')}
-                role="button"
-                tabIndex={0}
               >
                 <div className="city-service-top">
                   <div className="city-service-icon-box">
@@ -458,14 +404,12 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     <ArrowUpRight size={15} />
                   </div>
                 </div>
-              </div>
+              </Link>
 
               {/* 3. PERİYODİK BACA KONTROLLERİ */}
-              <div
+              <Link
+                to="/hizmetler/periyodik-baca-kontrolleri"
                 className="city-service-card"
-                onClick={() => navigate('/hizmetler/periyodik-baca-kontrolleri')}
-                role="button"
-                tabIndex={0}
               >
                 <div className="city-service-top">
                   <div className="city-service-icon-box">
@@ -484,7 +428,7 @@ export default function CityDetailPage({ onOpenAppointment }) {
                     <ArrowUpRight size={15} />
                   </div>
                 </div>
-              </div>
+              </Link>
 
             </div>
 
@@ -678,27 +622,22 @@ export default function CityDetailPage({ onOpenAppointment }) {
             <div className="container">
               <div className="neighbors-header">
                 <h4>{city.region} Bölgesindeki Diğer Hizmet Noktalarımız:</h4>
-                <button
-                  type="button"
-                  className="back-to-all-cities-link"
-                  onClick={() => navigate('/iller')}
-                >
+                <Link to="/iller" className="back-to-all-cities-link">
                   <MapPin size={14} />
                   <span>Tüm 81 İli Görüntüle</span>
                   <ArrowUpRight size={14} />
-                </button>
+                </Link>
               </div>
 
               <div className="neighbors-chips-grid">
                 {regionalNeighbors.map((neighbor) => (
-                  <button
+                  <Link
                     key={neighbor.slug}
-                    type="button"
+                    to={`/iller/${neighbor.slug}`}
                     className="neighbor-chip"
-                    onClick={() => navigate(`/iller/${neighbor.slug}`)}
                   >
                     <strong>{neighbor.plate}</strong> - {neighbor.name}
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>

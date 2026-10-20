@@ -108,6 +108,13 @@
   text-align: left;
 }
 
+a.footer-link-btn,
+a.footer-brand-btn,
+a.footer-legal-link-btn {
+  text-decoration: none;
+  font-family: inherit;
+}
+
 .footer-link,
 .footer-link-btn {
   font-size: 14px;

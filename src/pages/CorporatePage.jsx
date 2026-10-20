@@ -6,7 +6,7 @@
    ========================================================================== */
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
   ChevronRight, 
   Home
@@ -14,6 +14,9 @@ import {
 import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/Footer';
 import SeoHead from '../components/Common/SeoHead';
+import { STATIC_SEO_ROUTES } from '../seo/routes';
+import { absUrl } from '../seo/site';
+import { breadcrumbSchema } from '../seo/schema';
 import AboutStory from '../components/About/AboutStory';
 import MissionVision from '../components/About/MissionVision';
 import QualityControlInfographic from '../components/About/QualityControlInfographic';
@@ -24,16 +27,25 @@ import '../components/About/AboutSection.css';
 import './CorporatePage.css';
 
 export default function CorporatePage({ onOpenAppointment }) {
-  const navigate = useNavigate();
+  const corporateSeo = STATIC_SEO_ROUTES.find((route) => route.path === '/kurumsal');
 
   return (
     <div className="corporate-page-layout">
       {/* Kurumsal Sayfası SEO Tanımı */}
       <SeoHead
-        title="Kurumsal | Akreditasyon & Muayene Standartlarımız - Baca Rapor"
-        description="Baca Rapor hakkında: TS EN ISO/IEC 17020 akreditasyon vizyonu, 6 aşamalı kalite kontrol süreci ve bağımsız muayene prosedürleri."
-        keywords="baca raporu kurumsal, ts en iso 17020 akreditasyon, baca kontrol standartları, baca muayene kalite prosedürü"
-        canonicalUrl="https://bacaraporu.com.tr/kurumsal"
+        title={corporateSeo.title}
+        description={corporateSeo.description}
+        keywords={corporateSeo.keywords}
+        canonicalUrl={absUrl('/kurumsal')}
+        schemaData={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            breadcrumbSchema([
+              { name: 'Ana Sayfa', url: absUrl('/') },
+              { name: 'Kurumsal', url: absUrl('/kurumsal') },
+            ]),
+          ],
+        }}
       />
       
       {/* 1. ÜST SABİT NAVİGASYON */}
@@ -45,17 +57,16 @@ export default function CorporatePage({ onOpenAppointment }) {
         <div className="corporate-page-hero">
           <div className="container">
             <nav className="corporate-breadcrumb" aria-label="Ekmek kırıntısı">
-              <button 
-                type="button" 
-                className="breadcrumb-link"
-                onClick={() => navigate('/')}
-              >
+              <Link to="/" className="breadcrumb-link">
                 <Home size={14} />
                 <span>Ana Sayfa</span>
-              </button>
+              </Link>
               <ChevronRight size={14} className="breadcrumb-separator" />
               <span className="breadcrumb-current font-medium">Kurumsal & Akreditasyon</span>
             </nav>
+            <h1 className="corporate-page-heading font-bold">
+              Kurumsal Baca Muayene Standartları ve Akreditasyon
+            </h1>
           </div>
         </div>
 
@@ -97,7 +108,7 @@ export default function CorporatePage({ onOpenAppointment }) {
               {/* ARA BÖLÜM ÇİZGİSİ */}
               <div className="stream-divider">
                 <span className="divider-line"></span>
-                <span className="divider-label font-medium">// TS EN ISO/IEC 17020 AKREDİTASYON & KALİTE POLİTİKASI</span>
+                <span className="divider-label font-medium">// TS EN ISO/IEC 17020 KALİTE POLİTİKASI</span>
                 <span className="divider-line"></span>
               </div>
 

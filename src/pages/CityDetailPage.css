@@ -32,6 +32,11 @@
   flex-wrap: wrap;
 }
 
+a.city-breadcrumb-link {
+  text-decoration: none;
+  font-family: inherit;
+}
+
 .city-breadcrumb-link {
   display: inline-flex;
   align-items: center;
@@ -478,6 +483,11 @@
   gap: 24px;
 }
 
+a.city-service-card {
+  color: inherit;
+  text-decoration: none;
+}
+
 .city-service-card {
   background: #0f0f14;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -857,6 +867,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+a.neighbor-chip,
+a.back-to-all-cities-link {
+  text-decoration: none;
+  font-family: inherit;
 }
 
 .neighbor-chip {

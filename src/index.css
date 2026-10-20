@@ -141,6 +141,10 @@ button, a {
 }
 
 /* Birincil Buton: Temiz beyaz yüzey, koyu yazı */
+a.btn-primary {
+  text-decoration: none;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;

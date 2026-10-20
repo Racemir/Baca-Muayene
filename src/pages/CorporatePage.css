@@ -28,6 +28,13 @@
   gap: 10px;
 }
 
+.corporate-page-heading {
+  margin: 18px 0 0;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  color: #f3f3f6;
+}
+
 .breadcrumb-link {
   display: inline-flex;
   align-items: center;
@@ -39,6 +46,8 @@
   cursor: pointer;
   padding: 0;
   transition: color 0.2s ease;
+  text-decoration: none;
+  font-family: inherit;
 }
 
 .breadcrumb-link:hover {

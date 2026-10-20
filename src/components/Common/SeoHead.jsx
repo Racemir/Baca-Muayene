@@ -1,11 +1,38 @@
 /* ==========================================================================
-   BİLEŞEN: DİNAMİK SEO VE YAPILANDIRILMIŞ VERİ YÖNETİCİSİ (SEOHEAD.JSX)
-   Açıklama: Her sayfa için dinamik <title>, <meta description>, canonical URL
-   ve Schema.org JSON-LD yapılandırılmış verisini yönetir.
-   Arama motorlarının (Googlebot vb.) sayfaları doğru indekslemesini sağlar.
+   BİLEŞEN: DİNAMİK SEO VE YAPILANDIRILMIŞ VERİ
+   Title, description, canonical, robots, Open Graph, Twitter Card,
+   hreflang ve Schema.org JSON-LD tek yerden güncellenir.
    ========================================================================== */
 
 import { useEffect } from 'react';
+import { SITE } from '../../seo/site';
+
+function upsertMeta(selector, attributes) {
+  let el = document.querySelector(selector);
+  if (!el) {
+    el = document.createElement('meta');
+    Object.entries(attributes).forEach(([key, value]) => {
+      if (key !== 'content') el.setAttribute(key, value);
+    });
+    document.head.appendChild(el);
+  }
+  if (attributes.content != null) {
+    el.setAttribute('content', attributes.content);
+  }
+  return el;
+}
+
+function upsertLink(rel, href, extra = {}) {
+  const extraKey = extra.hreflang ? `[hreflang="${extra.hreflang}"]` : '';
+  let el = document.querySelector(`link[rel="${rel}"]${extraKey}`);
+  if (!el) {
+    el = document.createElement('link');
+    el.setAttribute('rel', rel);
+    if (extra.hreflang) el.setAttribute('hreflang', extra.hreflang);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('href', href);
+}
 
 export default function SeoHead({
   title,
@@ -13,68 +40,66 @@ export default function SeoHead({
   canonicalUrl,
   keywords,
   schemaData,
+  noindex = false,
+  ogType = 'website',
+  image = SITE.ogImage,
 }) {
   useEffect(() => {
-    // 1. Sayfa Başlığı
     if (title) {
       document.title = title;
     }
 
-    // 2. Meta Açıklama (Description)
+    const robots = noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+    upsertMeta('meta[name="robots"]', { name: 'robots', content: robots });
+    upsertMeta('meta[name="googlebot"]', { name: 'googlebot', content: robots });
+
     if (description) {
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        document.head.appendChild(metaDesc);
-      }
-      metaDesc.setAttribute('content', description);
+      upsertMeta('meta[name="description"]', { name: 'description', content: description });
     }
 
-    // 3. Meta Anahtar Kelimeler (Keywords)
     if (keywords) {
-      let metaKeywords = document.querySelector('meta[name="keywords"]');
-      if (!metaKeywords) {
-        metaKeywords = document.createElement('meta');
-        metaKeywords.setAttribute('name', 'keywords');
-        document.head.appendChild(metaKeywords);
-      }
-      metaKeywords.setAttribute('content', keywords);
+      upsertMeta('meta[name="keywords"]', { name: 'keywords', content: keywords });
     }
 
-    // 4. Canonical Bağlantısı
+    upsertMeta('meta[name="author"]', { name: 'author', content: SITE.name });
+    upsertMeta('meta[name="theme-color"]', { name: 'theme-color', content: SITE.themeColor });
+    upsertMeta('meta[name="geo.region"]', { name: 'geo.region', content: 'TR' });
+    upsertMeta('meta[name="geo.placename"]', { name: 'geo.placename', content: SITE.foundingLocation });
+
     if (canonicalUrl) {
-      let linkCanonical = document.querySelector('link[rel="canonical"]');
-      if (!linkCanonical) {
-        linkCanonical = document.createElement('link');
-        linkCanonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(linkCanonical);
-      }
-      linkCanonical.setAttribute('href', canonicalUrl);
+      upsertLink('canonical', canonicalUrl);
+      upsertLink('alternate', canonicalUrl, { hreflang: 'tr' });
+      upsertLink('alternate', canonicalUrl, { hreflang: 'x-default' });
     }
 
-    // 5. Open Graph Meta Etiketleri (Sosyal Medya ve WhatsApp Paylaşımı)
-    const updateOgMeta = (property, content) => {
+    const setOg = (property, content) => {
       if (!content) return;
-      let meta = document.querySelector(`meta[property="${property}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute('property', property);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
+      upsertMeta(`meta[property="${property}"]`, { property, content });
+    };
+    const setName = (name, content) => {
+      if (!content) return;
+      upsertMeta(`meta[name="${name}"]`, { name, content });
     };
 
-    if (title) updateOgMeta('og:title', title);
-    if (description) updateOgMeta('og:description', description);
-    if (canonicalUrl) updateOgMeta('og:url', canonicalUrl);
-    updateOgMeta('og:type', 'website');
-    updateOgMeta('og:site_name', 'Baca Rapor');
+    setOg('og:title', title);
+    setOg('og:description', description);
+    setOg('og:url', canonicalUrl);
+    setOg('og:type', ogType);
+    setOg('og:site_name', SITE.name);
+    setOg('og:locale', SITE.locale);
+    setOg('og:image', image);
+    setOg('og:image:alt', SITE.ogImageAlt);
+    setOg('og:image:width', '1200');
+    setOg('og:image:height', '630');
 
-    // 6. Schema.org JSON-LD Yapılandırılmış Veri
+    setName('twitter:card', 'summary_large_image');
+    setName('twitter:title', title);
+    setName('twitter:description', description);
+    setName('twitter:image', image);
+    setName('twitter:image:alt', SITE.ogImageAlt);
+
     const schemaScriptId = 'dynamic-seo-schema-ld';
     let schemaScript = document.getElementById(schemaScriptId);
-
     if (schemaData) {
       if (!schemaScript) {
         schemaScript = document.createElement('script');
@@ -86,11 +111,7 @@ export default function SeoHead({
     } else if (schemaScript) {
       schemaScript.remove();
     }
-
-    return () => {
-      // Bileşen unmount olduğunda temizleme opsiyoneldir
-    };
-  }, [title, description, canonicalUrl, keywords, schemaData]);
+  }, [title, description, canonicalUrl, keywords, schemaData, noindex, ogType, image]);
 
   return null;
 }

@@ -9,15 +9,14 @@
    ========================================================================== */
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, Gauge, FileCheck2, ShieldCheck } from 'lucide-react';
-import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.jpg';
-import imgProjeMontaj from '../../assets/images/service-proje-montaj.jpg';
-import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.jpg';
+import imgSizdirmazlik from '../../assets/images/service-sizdirmazlik.webp';
+import imgProjeMontaj from '../../assets/images/service-proje-montaj.webp';
+import imgPeriyodik from '../../assets/images/service-periyodik-kontrol.webp';
 import './ServicesCards.css';
 
 export default function ServicesCards() {
-  const navigate = useNavigate();
 
   // 3 Temel Hizmetin Veri Yapısı ve Ayrılmış Sayfa Rotaları
   const services = [
@@ -53,10 +52,6 @@ export default function ServicesCards() {
     },
   ];
 
-  const handleCardClick = (item) => {
-    navigate(item.path);
-  };
-
   return (
     /* ===== [WEBSITE BÖLÜMÜ]: HİZMETLER BÖLÜMÜ (3'LÜ KART DÜZENİ) ===== */
     <section id="hizmetler" className="services-section">
@@ -81,18 +76,10 @@ export default function ServicesCards() {
           {services.map((item) => {
             const IconComponent = item.icon;
             return (
-              <div 
-                key={item.id} 
+              <Link
+                key={item.id}
+                to={item.path}
                 className="service-card"
-                onClick={() => handleCardClick(item)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleCardClick(item);
-                  }
-                }}
               >
                 {/* Kart İçi Üst Bilgi Alanı */}
                 <div className="card-top-content">
@@ -116,7 +103,10 @@ export default function ServicesCards() {
                     src={item.image} 
                     alt={item.title} 
                     className="card-media-image"
-                    loading="lazy" 
+                    width={800}
+                    height={520}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="card-image-gradient-overlay"></div>
                 </div>
@@ -128,7 +118,7 @@ export default function ServicesCards() {
                     <ArrowUpRight size={16} />
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
