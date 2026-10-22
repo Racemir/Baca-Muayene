@@ -5,6 +5,10 @@ Disallow: /404.html
 
 User-agent: Googlebot-Image
 Allow: /
+Allow: /favicon.ico
+Allow: /favicon-48x48.png
+Allow: /favicon-192x192.png
+Allow: /favicon-512x512.png
 
 User-agent: Bingbot
 Allow: /

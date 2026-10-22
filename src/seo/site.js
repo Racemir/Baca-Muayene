@@ -16,6 +16,7 @@ export const SITE = {
   ogImage: 'https://bacaraporu.com.tr/og-cover.webp',
   ogImageAlt: 'Baca Raporu — yetkili baca sızdırmazlık testi ve uygunluk raporu',
   logo: 'https://bacaraporu.com.tr/favicon-512x512.png',
+  contentLastmod: '2026-10-22',
   themeColor: '#050505',
   areaServed: 'Türkiye',
   foundingLocation: 'İstanbul',

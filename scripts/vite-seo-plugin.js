@@ -16,12 +16,12 @@ function getAllSeoRoutes() {
 }
 
 function buildSitemapXml() {
-  const today = new Date().toISOString().slice(0, 10);
+  const lastmod = SITE.contentLastmod;
   const urls = getAllSeoRoutes()
     .map(
       (route) => `  <url>
     <loc>${escapeHtml(route.canonicalUrl)}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority.toFixed(2)}</priority>
   </url>`
